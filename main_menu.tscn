@@ -1,7 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdfbu3bryjqwa"]
-
-[ext_resource type="Script" path="res://main_menu.gd" id="1_8af3b"]
-[ext_resource type="Texture2D" uid="uid://tkty6q04uwjy" path="res://images/background/waterfall.png" id="2_yhk17"]
+[gd_scene format=3 uid="uid://bdfbu3bryjqwa"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -10,13 +7,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8af3b")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 654.0
-texture = ExtResource("2_yhk17")
 
 [node name="Button Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,11 +37,6 @@ text = "Load Game"
 custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
 text = "Settings"
-
-[node name="Gallery" type="Button" parent="Button Menu"]
-custom_minimum_size = Vector2(150, 75)
-layout_mode = 2
-text = "Gallery"
 
 [node name="Quit" type="Button" parent="Button Menu"]
 custom_minimum_size = Vector2(150, 75)
