@@ -14,3 +14,7 @@ config/name="Godot 2 Player Game"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="Godot 2 Player Game"
