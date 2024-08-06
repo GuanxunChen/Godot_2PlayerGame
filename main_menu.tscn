@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdfbu3bryjqwa"]
+[gd_scene load_steps=3 format=3 uid="uid://bdfbu3bryjqwa"]
 
 [ext_resource type="Texture2D" uid="uid://dr0u5r8nkfar8" path="res://art/temp,testing/backgrounds/White_background.jpg" id="1_ckse7"]
+[ext_resource type="Script" path="res://main_menu.cs" id="1_rwoyd"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rwoyd")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
