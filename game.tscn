@@ -1,20 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl2ycq61cc1fw"]
+[gd_scene load_steps=2 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_e6gqo"]
-specular_color = Color(0.317647, 1, 1, 1)
-
 [node name="Node2D" type="Node2D"]
-position = Vector2(2, -12)
 
-[node name="BlackWindows" type="Sprite2D" parent="."]
-position = Vector2(577, 334)
-scale = Vector2(11.615, 6.535)
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.145098, 1, 1, 1)
-position = Vector2(292.75, 134.25)
-scale = Vector2(586.5, 269.5)
-texture = SubResource("CanvasTexture_e6gqo")
