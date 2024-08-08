@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.ComponentModel;
+using System.Net;
 
 public partial class main_menu : Control
 {
@@ -10,9 +12,15 @@ public partial class main_menu : Control
     {
 		// Get Buttons
         Button startButton = GetNode<Button>("Button Menu/Start Game");
+        Button loadButton = GetNode<Button>("Button Menu/Load Game");
+        Button settingButton = GetNode<Button>("Button Menu/Settings");
+        Button quitButton = GetNode<Button>("Button Menu/Quit");
 
 		// Buttons pressed
         startButton.Pressed += OnStartButtonPressed;
+        loadButton.Pressed += OnLoadButtonPressed;
+        settingButton.Pressed += OnSettingButtonPressed;
+        quitButton.Pressed += OnQuitButtonPressed;
     }
 
 	/// =====================================
@@ -37,5 +45,20 @@ public partial class main_menu : Control
         {
             GD.PrintErr("Failed to load the game scene at path: " + GameScenePath);
         }
+    }
+
+    private void OnLoadButtonPressed()
+    {
+        
+    }
+
+    private void OnSettingButtonPressed()
+    {
+
+    }
+
+    private void OnQuitButtonPressed()
+    {
+        GetTree().Quit();
     }
 }
