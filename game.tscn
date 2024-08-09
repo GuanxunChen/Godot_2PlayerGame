@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl2ycq61cc1fw"]
+[gd_scene load_steps=5 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
 [ext_resource type="Texture2D" uid="uid://cxf74q6vduq0" path="res://icon.svg" id="2_g3hqw"]
+[ext_resource type="Texture2D" uid="uid://g4ddd1wof6n3" path="res://art/temp,testing/characters/tempTesting.jpg" id="4_5kh6s"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dn0bh")
@@ -12,7 +13,12 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
 
-[node name="FadeControl" type="TextureRect" parent="."]
+[node name="FadeOut" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_5kh6s")
+
+[node name="FadeIn" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
