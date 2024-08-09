@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class game : Node2D
-{
+{   
     //private ColorRect _fadeRect;
 	private TextureRect _fadeRect;
     private TextureRect _fadeRect2;
@@ -17,46 +17,35 @@ public partial class game : Node2D
 
         if (_fadeRect != null)
         {
-            GD.Print("FadeControl found. Starting Fade In");
-            FadeIn();
+            FadeIn(_fadeRect);
         }
-        else
-        {
-            GD.PrintErr("FadeControl not found!");
-        }
-        
-        await ToSignal(GetTree().CreateTimer(100.0f),"");
 
         if (_fadeRect2 != null)
-        {            
-            FadeOut();
+        {
+            FadeOut(_fadeRect2);
         }
 
     }
 
-    private async void FadeIn()
+    private async void FadeIn(TextureRect _fadeRect)
 	{
-		//GD.Print("Fade In started");
-
 		for (float i = 1.0f; i >= 0; i -= 0.01f)
 		{
-			Color currentColor = new Color(1, 1, 1, i);
-			_fadeRect.Modulate = currentColor;
-			//GD.Print("Current Alpha: " + i + " | Modulate: " + _fadeRect.Modulate);
+			_fadeRect.Modulate = new Color(1, 1, 1, i);
 			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 		}
 
-		_fadeRect.Modulate = new Color(0, 0, 0, 0); // Ensure the final color is fully transparent
-		//GD.Print("Fade In complete");
+		_fadeRect.Modulate = new Color(0, 0, 0, 0);
 	}
 
-    private async void FadeOut()
+    private async void FadeOut(TextureRect _fadeRect)
     {
         for (float i = 0; i <= 1.0f; i += 0.05f)
         {
             _fadeRect.Modulate = new Color(1, 1, 1, i); // Adjust alpha from 0 to 1
-            await ToSignal(_tree.CreateTimer(0.05f), "timeout");
+            await ToSignal(_tree.CreateTimer(0.1f), "timeout");
         }
-    }
 
+		_fadeRect.Modulate = new Color(1, 1, 1, 1);
+    }
 }

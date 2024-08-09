@@ -13,12 +13,12 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
 
-[node name="FadeOut" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("4_5kh6s")
-
 [node name="FadeIn" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
+
+[node name="FadeOut" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_5kh6s")
