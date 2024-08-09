@@ -28,6 +28,7 @@ public partial class main_menu : Control
 	/// =====================================
     private void OnStartButtonPressed()
     {
+        
         // Load the game scene
         PackedScene gameScene = (PackedScene)GD.Load(GameScenePath);
         
