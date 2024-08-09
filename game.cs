@@ -24,18 +24,18 @@ public partial class game : Node2D
 
     private async void FadeIn()
 	{
-		GD.Print("Fade In started");
+		//GD.Print("Fade In started");
 
 		for (float i = 1.0f; i >= 0; i -= 0.01f)
 		{
-			Color currentColor = new Color(0, 0, 0, i);
+			Color currentColor = new Color(0.31f, 0.961f, 0.875f, i);
 			_fadeRect.Modulate = currentColor;
-			GD.Print("Current Alpha: " + i + " | Modulate: " + _fadeRect.Modulate);
+			//GD.Print("Current Alpha: " + i + " | Modulate: " + _fadeRect.Modulate);
 			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 		}
 
 		_fadeRect.Modulate = new Color(0, 0, 0, 0); // Ensure the final color is fully transparent
-		GD.Print("Fade In complete");
+		//GD.Print("Fade In complete");
 	}
 
 }
