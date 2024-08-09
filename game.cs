@@ -3,49 +3,56 @@ using System;
 
 public partial class game : Node2D
 {   
-    //private ColorRect _fadeRect;
-	private TextureRect _fadeRect;
-    private TextureRect _fadeRect2;
-    private SceneTree _tree;
+	private TextureRect fadeRect;
+    private TextureRect fadeRect2;
+	private TextureRect background;
+    private SceneTree tree;
 
     public override async void _Ready()
     {
         //_fadeRect = GetNode<ColorRect>("FadeControl");
-		_fadeRect = GetNode<TextureRect>("FadeIn");// fade in to the background
-		_fadeRect2 = GetNode<TextureRect>("FadeOut");// fade out from background
-        _tree = GetTree();
+		fadeRect = GetNode<TextureRect>("FadeIn");// fade in to the background
+		fadeRect2 = GetNode<TextureRect>("FadeOut");// fade out from background
+        background = GetNode<TextureRect>("Background");
+        tree = GetTree();
 
-        if (_fadeRect != null)
+        if (fadeRect != null)
         {
-            FadeIn(_fadeRect);
+            FadeIn(fadeRect);
         }
 
-        if (_fadeRect2 != null)
+        await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+        background.Modulate = new Color(0, 0, 0, 0);
+        
+        if (fadeRect2 != null)
         {
-            FadeOut(_fadeRect2);
+            FadeOut(fadeRect2);
         }
+        
+        await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+        //background.Modulate = new Color(1, 1, 1, 1);
 
     }
 
-    private async void FadeIn(TextureRect _fadeRect)
+    private async void FadeIn(TextureRect fadeRect)
 	{
 		for (float i = 1.0f; i >= 0; i -= 0.01f)
 		{
-			_fadeRect.Modulate = new Color(1, 1, 1, i);
+			fadeRect.Modulate = new Color(1, 1, 1, i);
 			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 		}
 
-		_fadeRect.Modulate = new Color(0, 0, 0, 0);
+		fadeRect.Modulate = new Color(0, 0, 0, 0);
 	}
 
-    private async void FadeOut(TextureRect _fadeRect)
+    private async void FadeOut(TextureRect fadeRect)
     {
         for (float i = 0; i <= 1.0f; i += 0.05f)
         {
-            _fadeRect.Modulate = new Color(1, 1, 1, i); // Adjust alpha from 0 to 1
-            await ToSignal(_tree.CreateTimer(0.1f), "timeout");
+            fadeRect.Modulate = new Color(1, 1, 1, i); // Adjust alpha from 0 to 1
+            await ToSignal(tree.CreateTimer(0.1f), "timeout");
         }
 
-		_fadeRect.Modulate = new Color(1, 1, 1, 1);
+		fadeRect.Modulate = new Color(1, 1, 1, 1);
     }
 }
