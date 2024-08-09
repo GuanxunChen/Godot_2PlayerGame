@@ -3,12 +3,14 @@ using System;
 
 public partial class game : Node2D
 {
-    private ColorRect _fadeRect;
+    //private ColorRect _fadeRect;
+	private TextureRect _fadeRect;
     private SceneTree _tree;
 
     public override void _Ready()
     {
-        _fadeRect = GetNode<ColorRect>("FadeControl");
+        //_fadeRect = GetNode<ColorRect>("FadeControl");
+		_fadeRect = GetNode<TextureRect>("FadeControl");
         _tree = GetTree();
 
         if (_fadeRect != null)
@@ -28,7 +30,7 @@ public partial class game : Node2D
 
 		for (float i = 1.0f; i >= 0; i -= 0.01f)
 		{
-			Color currentColor = new Color(0.31f, 0.961f, 0.875f, i);
+			Color currentColor = new Color(1, 1, 1, i);
 			_fadeRect.Modulate = currentColor;
 			//GD.Print("Current Alpha: " + i + " | Modulate: " + _fadeRect.Modulate);
 			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
