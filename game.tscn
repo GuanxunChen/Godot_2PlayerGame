@@ -22,3 +22,18 @@ texture = ExtResource("2_g3hqw")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+transparent_bg = true
+position = Vector2i(0, 855)
+size = Vector2i(1920, 215)
+visible = true
+transparent = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1916.0
+offset_bottom = 211.0
+scale = Vector2(2.085, 2.085)
+text = "This is a test! This is a test!"
