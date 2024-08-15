@@ -24,11 +24,9 @@ func _ready():
 
 func _input(event):
 	# Check for screen click, Spacebar, or Enter key to proceed to the next text
-	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_SPACE or event.scancode == KEY_ENTER:
-			proceed_to_next_text()
-	elif event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed:
 		proceed_to_next_text()
+	
 
 func proceed_to_next_text():
 	current_text_index += 1

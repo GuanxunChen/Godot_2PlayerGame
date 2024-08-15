@@ -32,6 +32,7 @@ offset_bottom = 144.815
 script = ExtResource("5_npl7g")
 
 [node name="Label" type="Label" parent="Panel"]
+visibility_layer = 16
 layout_mode = 0
 offset_left = -208.0
 offset_top = 608.0
