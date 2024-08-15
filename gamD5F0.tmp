@@ -24,25 +24,19 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 208.0
-offset_top = 144.0
-offset_right = 209.0
-offset_bottom = 144.815
-script = ExtResource("5_npl7g")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = -208.0
-offset_top = 608.0
-offset_right = 1712.0
-offset_bottom = 933.0
-theme_override_font_sizes/font_size = 25
-
 [node name="PopupPanel2" type="PopupPanel" parent="."]
 position = Vector2i(0, 850)
 size = Vector2i(1915, 205)
 transparent = true
+script = ExtResource("5_npl7g")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopupPanel2"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1911.0
+offset_bottom = 201.0
+scale = Vector2(1.845, 1.845)
+text = "Hello from across the nation!"
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 transparent_bg = true
@@ -57,14 +51,3 @@ offset_right = 1916.0
 offset_bottom = 211.0
 scale = Vector2(2.085, 2.085)
 text = "This is a test! This is a test!"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopupPanel"]
-anchors_preset = -1
-anchor_left = -147.518
-anchor_top = -125.31
-anchor_right = -147.518
-anchor_bottom = -125.31
-offset_left = 283235.0
-offset_top = 27693.7
-offset_right = 285155.0
-offset_bottom = 28018.7

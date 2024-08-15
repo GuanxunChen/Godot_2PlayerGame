@@ -1,14 +1,47 @@
-extends Node
-var visible : bool = false
+extends Panel
 
-# Called when the node enters the scene tree for the first time.
+# Declare member variables here.
+var texts = []
+var current_text_index = 0
+
 func _ready():
-	visible = false
+	# Initialize the list of texts
+	texts = [
+		"Welcome to the game!",
+		"This is the first level.",
+		"Good luck and have fun!"
+	]
+	
+	# Get the RichTextLabel node inside the Panel
+	var label = $Label
 
+	# Set the initial text
+	current_text_index = 0
+	label.text = texts[current_text_index]
 
-	 # Replace with function body.
+	# Show the panel initially
+	show_panel()
 
+func _input(event):
+	# Check for screen click, Spacebar, or Enter key to proceed to the next text
+	if event is InputEventKey and event.pressed:
+		if event.scancode == KEY_SPACE or event.scancode == KEY_ENTER:
+			proceed_to_next_text()
+	elif event is InputEventMouseButton and event.pressed:
+		proceed_to_next_text()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func proceed_to_next_text():
+	current_text_index += 1
+
+	if current_text_index < texts.size():
+		# Update the label with the next text
+		$Label.text = texts[current_text_index]
+	else:
+		# Hide the panel if all texts have been shown
+		hide_panel()
+
+func show_panel():
+	visible = true # Show the panel
+
+func hide_panel():
+	visible = false # Hide the panel
