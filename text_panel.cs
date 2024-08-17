@@ -36,7 +36,7 @@ public partial class text_panel : Panel
     }
 
     /// =====================================
-	/// EventListener Functions
+	/// Event Listener Functions
 	/// =====================================
     public override void _Input(InputEvent @event) // Mouse Click Function
     {

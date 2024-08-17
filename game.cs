@@ -3,7 +3,10 @@ using System;
 
 public partial class game : Node2D
 {   
+    private Global global;
     private SceneTree tree;
+    private TextureRect characterPortraitL;
+    private TextureRect characterPortraitR;
 	private TextureRect fadeRect;
     private TextureRect fadeRect2;
 
@@ -13,6 +16,10 @@ public partial class game : Node2D
         tree = GetTree();
 
         // Linking to nodes
+        global = (Global)GetNode("/root/Global");
+        characterPortraitL = GetNode<TextureRect>("CharacterPortraitL");
+        characterPortraitR = GetNode<TextureRect>("CharacterPortraitR");
+
 		fadeRect = GetNode<TextureRect>("FadeIn");
 		fadeRect2 = GetNode<TextureRect>("FadeOut");
 
@@ -32,6 +39,10 @@ public partial class game : Node2D
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
         fadeRect2.ZIndex = 0;
     }
+    
+    /// =====================================
+	/// Portrait Functions
+	/// =====================================
 
     /// =====================================
 	/// Image Fading Functions
