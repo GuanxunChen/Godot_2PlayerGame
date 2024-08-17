@@ -8,6 +8,9 @@ using System.Linq;
 public partial class Global : Node
 {
     public List<string> storylines = new List<string>();
+	public List<string> characterL = new List<string>();
+	public List<string> characterR = new List<string>();
+	public List<string> highlightLR = new List<string>();
     public int currentLine = 0;
 
     public override void _Ready()
@@ -22,10 +25,10 @@ public partial class Global : Node
 	public class StoryLine
 	{
 		// Getter and Setters
+		public string Line { get; set; }
 		public string LCharacters { get; set; }
 		public string RCharacters { get; set; }
 		public string HighlightL_R { get; set; }
-		public string Line { get; set; }
 	}
 
     /// =====================================
@@ -47,6 +50,9 @@ public partial class Global : Node
 			{
 				// Store to storylines
 				storylines = data["Intro"].Select(story => story.Line).ToList();
+				characterL = data["Intro"].Select(story => story.LCharacters).ToList();
+				characterR = data["Intro"].Select(story => story.RCharacters).ToList();
+				highlightLR = data["Intro"].Select(story => story.HighlightL_R).ToList();
 			}
 			else
 			{

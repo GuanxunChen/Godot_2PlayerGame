@@ -1,20 +1,20 @@
 {
 	"Intro":[
 		{
-			"LCharacters":"",
-			"RCharacters":"",
+			"LCharacters":"A",
+			"RCharacters":"1",
 			"HighlightL/R":"",
 			"Line":"虽不知其起源，亦不晓其原理，但不知何时开始，一种奇特的生物忽然出现在了人类的视界里。"
 		},
 		{
-			"LCharacters":"",
-			"RCharacters":"",
+			"LCharacters":"B",
+			"RCharacters":"2",
 			"HighlightL/R":"",
 			"Line":"这些生物们有着人类所无法媲美的力量与能力，让许多人心生畏惧的同时，也被许多人视为一种机遇与赐福。"
 		},
 		{
-			"LCharacters":"",
-			"RCharacters":"",
+			"LCharacters":"C",
+			"RCharacters":"3",
 			"HighlightL/R":"",
 			"Line":"上到政府，下到百姓，人们对这种生物产生了好奇，进行了接触。"
 		},
