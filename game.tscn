@@ -27,10 +27,9 @@ texture = ExtResource("1_yvxsf")
 [node name="TextPanel" type="Panel" parent="."]
 z_index = 10
 z_as_relative = false
-offset_left = 24.0
-offset_top = 557.0
-offset_right = 1882.0
-offset_bottom = 1092.0
+offset_top = 700.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("5_i61md")
 
 [node name="Texts" type="Label" parent="TextPanel"]
@@ -38,8 +37,8 @@ visibility_layer = 16
 z_index = 11
 z_as_relative = false
 layout_mode = 0
-offset_left = 48.0
-offset_top = 119.0
-offset_right = 1745.0
-offset_bottom = 444.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1895.0
+offset_bottom = 355.0
 theme_override_font_sizes/font_size = 25
