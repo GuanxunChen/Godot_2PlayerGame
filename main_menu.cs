@@ -59,7 +59,7 @@ public partial class main_menu : Control
 
     private void OnSettingButtonPressed()
     {
-
+        
     }
 
     private void OnQuitButtonPressed()
