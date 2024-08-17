@@ -12,20 +12,41 @@ public partial class Global : Node
 
     public override void _Ready()
     {
+		// Load the storylines as story
         LoadStory();
     }
+	
+	/// =====================================
+	/// (JSON) StoryLine Class
+	/// =====================================
+	public class StoryLine
+	{
+		// Getter and Setters
+		public string LCharacters { get; set; }
+		public string RCharacters { get; set; }
+		public string HighlightL_R { get; set; }
+		public string Line { get; set; }
+	}
 
+    /// =====================================
+	/// Story Loader Function
+	/// =====================================
     private void LoadStory()
 	{
+		// Linking to storyline files
 		string filePath = ProjectSettings.GlobalizePath("res://story.json");
+
+		// Check if story exist
 		try
 		{
 			var json = File.ReadAllText(filePath);
 			var data = JsonConvert.DeserializeObject<Dictionary<string, List<StoryLine>>>(json);
 
+			// Load Intro section
 			if (data.ContainsKey("Intro"))
 			{
-				storylines = data["Intro"].Select(story => story.Line).ToList(); // Assign to public field
+				// Store to storylines
+				storylines = data["Intro"].Select(story => story.Line).ToList();
 			}
 			else
 			{
@@ -37,12 +58,4 @@ public partial class Global : Node
 			GD.PrintErr("Error loading story: " + ex.Message);
 		}
 	}
-}
-
-public class StoryLine
-{
-    public string LCharacters { get; set; }
-    public string RCharacters { get; set; }
-    public string HighlightL_R { get; set; }
-    public string Line { get; set; }
 }

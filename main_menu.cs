@@ -5,16 +5,12 @@ using System.Net;
 
 public partial class main_menu : Control
 {
-    // Path to the game scene
+    // Linking to the game scene
     private const string GameScenePath = "res://game.tscn";
 
-    /// <summary>
-    /// Initializes the main menu by retrieving the start, load, settings, and quit buttons.
-    /// It then sets up event handlers for each button's pressed event.
-    /// </summary>
     public override void _Ready()
     {
-		// Get Buttons
+		// Linking to Buttons
         Button startButton = GetNode<Button>("Button Menu/Start Game");
         Button loadButton = GetNode<Button>("Button Menu/Load Game");
         Button settingButton = GetNode<Button>("Button Menu/Settings");
@@ -36,12 +32,16 @@ public partial class main_menu : Control
         // Load the game scene
         PackedScene gameScene = (PackedScene)GD.Load(GameScenePath);
         
+        // Check if game scene exist
         if (gameScene != null)
         {
+            // Load Scene Tree
             SceneTree tree = GetTree();
             
+            // Instantiate game scene
             Node gameSceneInstance = gameScene.Instantiate();
             
+            // Add game scene to root, free current scene, and set current scene to game scene
             tree.Root.AddChild(gameSceneInstance);
             tree.CurrentScene.QueueFree();
             tree.CurrentScene = gameSceneInstance;
