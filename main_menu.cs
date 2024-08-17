@@ -8,6 +8,10 @@ public partial class main_menu : Control
     // Path to the game scene
     private const string GameScenePath = "res://game.tscn";
 
+    /// <summary>
+    /// Initializes the main menu by retrieving the start, load, settings, and quit buttons.
+    /// It then sets up event handlers for each button's pressed event.
+    /// </summary>
     public override void _Ready()
     {
 		// Get Buttons
