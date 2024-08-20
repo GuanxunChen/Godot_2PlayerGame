@@ -86,7 +86,7 @@ texture = ExtResource("6_nxxi8")
 script = ExtResource("7_e7uic")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D2"]
-position = Vector2(952, 536)
+position = Vector2(960, 540)
 
 [node name="TextureRect" type="TextureRect" parent="Node2D2"]
 offset_right = 1920.0
