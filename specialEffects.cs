@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class game : Node2D
+public partial class specialEffects : Node2D
 {   
     private Global global;
     private SceneTree tree;

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://404heh1vlyra"]
 
-[ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
+[ext_resource type="Script" path="res://specialEffects.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
 [ext_resource type="Texture2D" uid="uid://cxf74q6vduq0" path="res://icon.svg" id="2_g3hqw"]
 [ext_resource type="Texture2D" uid="uid://g4ddd1wof6n3" path="res://art/temp,testing/characters/tempTesting.jpg" id="4_5kh6s"]
@@ -8,24 +8,26 @@
 [ext_resource type="Texture2D" uid="uid://yatkcg6f1qa6" path="res://art/temp,testing/characters/blue_npcCharacter.jpg" id="6_nxxi8"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_dn0bh")
 
-[node name="FadeOut" type="TextureRect" parent="."]
+[node name="FadeOut" type="TextureRect" parent="Node2D"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_5kh6s")
 
-[node name="FadeIn" type="TextureRect" parent="."]
+[node name="FadeIn" type="TextureRect" parent="Node2D"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="Node2D"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
 
-[node name="TextPanel" type="Panel" parent="."]
+[node name="TextPanel" type="Panel" parent="Node2D"]
 z_index = 10
 z_as_relative = false
 offset_top = 700.0
@@ -33,7 +35,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("5_i61md")
 
-[node name="Texts" type="Label" parent="TextPanel"]
+[node name="Texts" type="Label" parent="Node2D/TextPanel"]
 visibility_layer = 16
 z_index = 11
 z_as_relative = false
@@ -44,7 +46,7 @@ offset_right = 1895.0
 offset_bottom = 355.0
 theme_override_font_sizes/font_size = 25
 
-[node name="CharacterNameL" type="Label" parent="TextPanel"]
+[node name="CharacterNameL" type="Label" parent="Node2D/TextPanel"]
 z_index = 11
 z_as_relative = false
 layout_mode = 0
@@ -53,7 +55,7 @@ offset_top = -52.0
 offset_right = 448.0
 offset_bottom = 3.0
 
-[node name="CharacterNameR" type="Label" parent="TextPanel"]
+[node name="CharacterNameR" type="Label" parent="Node2D/TextPanel"]
 z_index = 11
 z_as_relative = false
 layout_mode = 0
@@ -63,15 +65,20 @@ offset_right = 1912.0
 offset_bottom = -5.0
 horizontal_alignment = 2
 
-[node name="CharacterL" type="TextureRect" parent="."]
+[node name="CharacterL" type="TextureRect" parent="Node2D"]
 offset_top = 300.0
 offset_right = 400.0
 offset_bottom = 1080.0
 texture = ExtResource("6_nxxi8")
 
-[node name="CharacterR" type="TextureRect" parent="."]
+[node name="CharacterR" type="TextureRect" parent="Node2D"]
 offset_left = 1520.0
 offset_top = 300.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("6_nxxi8")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D2"]
+position = Vector2(952, 536)
