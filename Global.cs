@@ -11,6 +11,7 @@ public partial class Global : Node
 	public List<string> characterL = new List<string>();
 	public List<string> characterR = new List<string>();
 	public List<string> highlightLR = new List<string>();
+	public List<string> triggers = new List<string>();
     public int currentLine = 0;
 
     public override void _Ready()
@@ -29,6 +30,7 @@ public partial class Global : Node
 		public string LCharacters { get; set; }
 		public string RCharacters { get; set; }
 		public string HighlightL_R { get; set; }
+		public string triggerTag { get; set; }
 	}
 
     /// =====================================
@@ -53,6 +55,7 @@ public partial class Global : Node
 				characterL = data["Intro"].Select(story => story.LCharacters).ToList();
 				characterR = data["Intro"].Select(story => story.RCharacters).ToList();
 				highlightLR = data["Intro"].Select(story => story.HighlightL_R).ToList();
+				triggers = data["Intro"].Select(story => story.triggerTag).ToList();
 			}
 			else
 			{
