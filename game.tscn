@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=12 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://yatkcg6f1qa6" path="res://art/temp,testing/characters/blue_npcCharacter.jpg" id="6_nxxi8"]
 [ext_resource type="Script" path="res://Node2D2.cs" id="7_e7uic"]
 [ext_resource type="Texture2D" uid="uid://blaybgmam8qkd" path="res://art/temp,testing/backgrounds/stretched-1920-1080-863061.jpg" id="8_4y5g4"]
+[ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
+[ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dn0bh")
@@ -92,3 +94,18 @@ position = Vector2(960, 540)
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("8_4y5g4")
+
+[node name="Character1" type="TextureRect" parent="Node2D2"]
+offset_top = 128.0
+offset_right = 632.0
+offset_bottom = 892.0
+texture = ExtResource("10_k3cex")
+expand_mode = 1
+
+[node name="Character2" type="TextureRect" parent="Node2D2"]
+offset_left = 1384.0
+offset_top = 152.0
+offset_right = 1912.0
+offset_bottom = 850.0
+texture = ExtResource("11_aabfh")
+expand_mode = 1

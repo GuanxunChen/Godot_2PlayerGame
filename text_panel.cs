@@ -7,6 +7,8 @@ public partial class text_panel : Panel
     private Label textLabel;
     private Label characterNameL;
     private Label characterNameR;
+    private TextureRect characterPortraitL;
+    private TextureRect characterPortraitR;
 
     public override void _Ready()
     {
@@ -15,6 +17,8 @@ public partial class text_panel : Panel
         textLabel = GetNode<Label>("Texts");
         characterNameL = GetNode<Label>("CharacterNameL");
         characterNameR = GetNode<Label>("CharacterNameR");
+        characterPortraitL = GetNode<TextureRect>("CharacterPortraitL");
+        characterPortraitR = GetNode<TextureRect>("CharacterPortraitR");
         
         // Check if story exist
         if (global.storylines.Count > 0)
@@ -59,6 +63,8 @@ public partial class text_panel : Panel
             textLabel.Text = global.storylines[global.currentLine];
             characterNameL.Text = global.characterL[global.currentLine];
             characterNameR.Text = global.characterR[global.currentLine];
+            characterNameL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            characterNameR.Modulate = new Color(1, 1, 1, 1);
         }
         else
         {
