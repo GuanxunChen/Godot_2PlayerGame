@@ -43,7 +43,7 @@ public partial class specialEffects : Node2D
         // Zoom in
         if (zoomRect != null)
         {
-            zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
+            //zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
             ZoomIn(zoomRect, 0.01f, 0.03f);
         }
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
@@ -91,12 +91,13 @@ public partial class specialEffects : Node2D
     {
         // Set to the top
         zoomRect.ZIndex = 1;
+        zoomRect.PivotOffset = zoomRect.Size / 2;
         
         // Adjust size from small to big
         for (float i = 0; i <= 1.0f; i += speed)
         {
             zoomRect.Scale = new Vector2(1 + i, 1 + i);
-            zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
+            //zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
             await ToSignal(tree.CreateTimer(timer), "timeout");
         }
     }
