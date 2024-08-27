@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=14 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://specialEffects.cs" id="2_os10v"]
 [ext_resource type="Texture2D" uid="uid://g4ddd1wof6n3" path="res://art/temp,testing/characters/tempTesting.jpg" id="4_5kh6s"]
 [ext_resource type="Script" path="res://text_panel.cs" id="5_i61md"]
+[ext_resource type="Texture2D" uid="uid://lyytfqr8c1yr" path="res://art/temp,testing/backgrounds/halo.jpg" id="5_ncaib"]
 [ext_resource type="Script" path="res://Node2D2.cs" id="7_e7uic"]
 [ext_resource type="Texture2D" uid="uid://cvoh6noug7gds" path="res://art/temp,testing/characters/download.jpg" id="7_v18d3"]
 [ext_resource type="Texture2D" uid="uid://blaybgmam8qkd" path="res://art/temp,testing/backgrounds/stretched-1920-1080-863061.jpg" id="8_4y5g4"]
@@ -28,6 +29,11 @@ texture = ExtResource("4_5kh6s")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
+
+[node name="ZoomIn" type="TextureRect" parent="Node2D"]
+offset_right = 363.0
+offset_bottom = 309.0
+texture = ExtResource("5_ncaib")
 
 [node name="Background" type="TextureRect" parent="Node2D"]
 offset_right = 1920.0
