@@ -17,8 +17,7 @@ public partial class specialEffects : Node2D
 
         // Linking to nodes
         global = (Global)GetNode("/root/Global");
-        characterPortraitL = GetNode<TextureRect>("CharacterPortraitL");
-        characterPortraitR = GetNode<TextureRect>("CharacterPortraitR");
+
 
 		fadeRect = GetNode<TextureRect>("FadeIn");
 		fadeRect2 = GetNode<TextureRect>("FadeOut");

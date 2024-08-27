@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=13 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -6,9 +6,10 @@
 [ext_resource type="Script" path="res://specialEffects.cs" id="2_os10v"]
 [ext_resource type="Texture2D" uid="uid://g4ddd1wof6n3" path="res://art/temp,testing/characters/tempTesting.jpg" id="4_5kh6s"]
 [ext_resource type="Script" path="res://text_panel.cs" id="5_i61md"]
-[ext_resource type="Texture2D" uid="uid://yatkcg6f1qa6" path="res://art/temp,testing/characters/blue_npcCharacter.jpg" id="6_nxxi8"]
 [ext_resource type="Script" path="res://Node2D2.cs" id="7_e7uic"]
+[ext_resource type="Texture2D" uid="uid://cvoh6noug7gds" path="res://art/temp,testing/characters/download.jpg" id="7_v18d3"]
 [ext_resource type="Texture2D" uid="uid://blaybgmam8qkd" path="res://art/temp,testing/backgrounds/stretched-1920-1080-863061.jpg" id="8_4y5g4"]
+[ext_resource type="Texture2D" uid="uid://dws7x0vgca6kx" path="res://art/temp,testing/characters/royal knights.jpg" id="8_ng1tp"]
 [ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
 
@@ -60,6 +61,7 @@ offset_left = 8.0
 offset_top = -52.0
 offset_right = 448.0
 offset_bottom = 3.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="CharacterNameR" type="Label" parent="Node2D/TextPanel"]
 z_index = 11
@@ -69,22 +71,26 @@ offset_left = 1472.0
 offset_top = -60.0
 offset_right = 1912.0
 offset_bottom = -5.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="CharacterL" type="TextureRect" parent="Node2D"]
 offset_top = 300.0
 offset_right = 400.0
 offset_bottom = 1080.0
-texture = ExtResource("6_nxxi8")
+texture = ExtResource("7_v18d3")
+expand_mode = 1
 
 [node name="CharacterR" type="TextureRect" parent="Node2D"]
 offset_left = 1520.0
 offset_top = 300.0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("6_nxxi8")
+texture = ExtResource("8_ng1tp")
+expand_mode = 1
 
 [node name="Node2D2" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_e7uic")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D2"]

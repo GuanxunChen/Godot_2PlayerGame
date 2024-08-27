@@ -7,8 +7,9 @@ public partial class text_panel : Panel
     private Label textLabel;
     private Label characterNameL;
     private Label characterNameR;
-    private TextureRect characterPortraitL;
-    private TextureRect characterPortraitR;
+    private TextureRect characterL;
+    private TextureRect characterR;
+    private bool isLeftPortraitActive = true;
 
     public override void _Ready()
     {
@@ -17,8 +18,8 @@ public partial class text_panel : Panel
         textLabel = GetNode<Label>("Texts");
         characterNameL = GetNode<Label>("CharacterNameL");
         characterNameR = GetNode<Label>("CharacterNameR");
-        characterPortraitL = GetNode<TextureRect>("CharacterPortraitL");
-        characterPortraitR = GetNode<TextureRect>("CharacterPortraitR");
+        characterL = GetNode<TextureRect>("../CharacterL");
+        characterR = GetNode<TextureRect>("../CharacterR");
         
         // Check if story exist
         if (global.storylines.Count > 0)
@@ -46,6 +47,17 @@ public partial class text_panel : Panel
     {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
+            isLeftPortraitActive = !isLeftPortraitActive; // toggle the state
+            if (isLeftPortraitActive)
+            {
+                characterL.Modulate = new Color(1, 1, 1, 1);
+                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            }
+            else
+            {
+                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+                characterR.Modulate = new Color(1, 1, 1, 1);
+            }
             ProceedToNextLine(global);
         }
     }
@@ -63,8 +75,6 @@ public partial class text_panel : Panel
             textLabel.Text = global.storylines[global.currentLine];
             characterNameL.Text = global.characterL[global.currentLine];
             characterNameR.Text = global.characterR[global.currentLine];
-            characterNameL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            characterNameR.Modulate = new Color(1, 1, 1, 1);
         }
         else
         {
