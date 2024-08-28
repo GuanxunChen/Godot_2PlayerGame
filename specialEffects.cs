@@ -25,7 +25,7 @@ public partial class specialEffects : Node2D
 		fadeRect2 = GetNode<TextureRect>("FadeOut");
         zoomRect = GetNode<TextureRect>("ZoomIn");
         zoomRect2 = GetNode<TextureRect>("ZoomOut");
-/*
+
         // Fade in
         if (fadeRect != null)
         {
@@ -52,9 +52,10 @@ public partial class specialEffects : Node2D
         }
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
         zoomRect.ZIndex = 0;
-*/
+
         
         // Zoom out
+        /*
         if (zoomRect2 != null)
         {
             // Center the TextureRect in the viewport
@@ -64,6 +65,7 @@ public partial class specialEffects : Node2D
         }
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
         zoomRect2.ZIndex = 0;
+        */
     }
     
     /// =====================================
@@ -73,34 +75,55 @@ public partial class specialEffects : Node2D
     /// =====================================
 	/// Image Effect Functions
 	/// =====================================
+    /// This function fades in the texture rect given. It does this by adjusting the
+    /// transparency of the texture rect from 100% to 0% over time.
+    ///
+    /// @param fadeRect - The texture rect to fade in
+    /// @param speed - The speed at which the texture rect fades in
+    /// @param timer - The time between each step of the fade in
+	/// =====================================
     private async void FadeIn(TextureRect fadeRect, float speed, float timer)
 	{
-        // Set to the top
+        // Set the texture rect's z-index to the top
 		fadeRect.ZIndex = 1;
 
-        // Adjust visibility from 1 to 0
+        // Start the loop that adjusts the transparency of the texture rect
 		for (float i = 1.0f; i >= 0; i -= speed)
 		{
+            // Set the transparency of the texture rect to the current value of i
 			fadeRect.Modulate = new Color(1, 1, 1, i);
+
+            // Wait for the specified amount of time before moving on to the next step
 			await ToSignal(GetTree().CreateTimer(timer), "timeout");
 		}
 
+        // Set the texture rect's transparency to 0% to make it completely invisible
 		fadeRect.Modulate = new Color(0, 0, 0, 0);
 	}
 
+    /// This function fades out the texture rect given. It does this by adjusting the
+    /// transparency of the texture rect from 0% to 100% over time.
+    ///
+    /// @param fadeRect - The texture rect to fade out
+    /// @param speed - The speed at which the texture rect fades out
+    /// @param timer - The time between each step of the fade out
     private async void FadeOut(TextureRect fadeRect, float speed, float timer)
     {
-		// Set to the top
+        // Set the texture rect's z-index to the top to ensure it is on top
         fadeRect.ZIndex = 1;
 
-        // Adjust visibility from 0 to 1
+        // Start the loop that adjusts the transparency of the texture rect
         for (float i = 0; i <= 1.0f; i += speed)
         {
+            // Set the transparency of the texture rect to the current value of i
             fadeRect.Modulate = new Color(1, 1, 1, i); 
+
+            // Wait for the specified amount of time before moving on to the next step
             await ToSignal(tree.CreateTimer(timer), "timeout");
         }
 
-		fadeRect.Modulate = new Color(1, 1, 1, 1);
+        // Set the texture rect's transparency to 100% to make it completely visible again
+        fadeRect.Modulate = new Color(1, 1, 1, 1);
     }
 
     private async void ZoomIn(TextureRect zoomRect, float ratio, float speed, float timer)
