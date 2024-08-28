@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class specialEffects : Node2D
+public partial class image_process : Node2D
 {   
     private Global global;
     private SceneTree tree;
@@ -50,12 +50,10 @@ public partial class specialEffects : Node2D
 
             ZoomIn(zoomRect, 0.2f, 0.02f, 0.03f);
         }
-        await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+        await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
         zoomRect.ZIndex = 0;
-
         
         // Zoom out
-        /*
         if (zoomRect2 != null)
         {
             // Center the TextureRect in the viewport
@@ -63,9 +61,8 @@ public partial class specialEffects : Node2D
 
             ZoomOut(zoomRect2, 1f, 0.01f, 0.03f);
         }
-        await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+        await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
         zoomRect2.ZIndex = 0;
-        */
     }
     
     /// =====================================

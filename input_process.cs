@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Node2D2 : Node2D
+public partial class input_process : Node2D
 {
     private Camera2D camera;
     private TextureRect character1;
@@ -81,6 +81,5 @@ public partial class Node2D2 : Node2D
         {
             Zorua.Position += new Vector2(speed, 0);
         }
-
     }
 }
