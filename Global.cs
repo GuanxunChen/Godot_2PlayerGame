@@ -12,6 +12,7 @@ public partial class Global : Node
 	public List<string> characterR = new List<string>();
 	public List<string> highlightLR = new List<string>();
 	public List<string> triggers = new List<string>();
+
     public int currentLine = 0;
 
     public override void _Ready()
@@ -66,5 +67,6 @@ public partial class Global : Node
 		{
 			GD.PrintErr("Error loading story: " + ex.Message);
 		}
+
 	}
 }

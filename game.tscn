@@ -30,24 +30,15 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
 
-[node name="ZoomIn" type="TextureRect" parent="Node2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 752.0
-offset_top = 344.0
-offset_right = 1115.0
-offset_bottom = 653.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ncaib")
-
 [node name="Background" type="TextureRect" parent="Node2D"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
+
+[node name="ZoomIn" type="TextureRect" parent="Node2D"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_ncaib")
 
 [node name="TextPanel" type="Panel" parent="Node2D"]
 z_index = 10

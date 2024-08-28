@@ -23,7 +23,7 @@ public partial class specialEffects : Node2D
 		fadeRect = GetNode<TextureRect>("FadeIn");
 		fadeRect2 = GetNode<TextureRect>("FadeOut");
         zoomRect = GetNode<TextureRect>("ZoomIn");
-
+/*
         // Fade in
         if (fadeRect != null)
         {
@@ -39,12 +39,14 @@ public partial class specialEffects : Node2D
         }
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
         fadeRect2.ZIndex = 0;
-
+*/
         // Zoom in
         if (zoomRect != null)
         {
-            //zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
-            ZoomIn(zoomRect, 0.01f, 0.03f);
+            // Center the TextureRect in the viewport
+            zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
+
+            ZoomIn(zoomRect, 0.2f, 0.02f, 0.03f);
         }
         await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
         zoomRect.ZIndex = 0;
@@ -87,17 +89,20 @@ public partial class specialEffects : Node2D
 		fadeRect.Modulate = new Color(1, 1, 1, 1);
     }
 
-    private async void ZoomIn(TextureRect zoomRect, float speed, float timer)
+    private async void ZoomIn(TextureRect zoomRect, float ratio, float speed, float timer)
     {
+        zoomRect.Scale = new Vector2(ratio, ratio);
+
         // Set to the top
         zoomRect.ZIndex = 1;
         zoomRect.PivotOffset = zoomRect.Size / 2;
-        
+
         // Adjust size from small to big
-        for (float i = 0; i <= 1.0f; i += speed)
+        while (ratio <= 1)
         {
-            zoomRect.Scale = new Vector2(1 + i, 1 + i);
-            //zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
+            ratio += speed;
+            zoomRect.Scale = new Vector2(ratio, ratio);
+            zoomRect.Position = (GetViewportRect().Size - zoomRect.Size) / 2;
             await ToSignal(tree.CreateTimer(timer), "timeout");
         }
     }
