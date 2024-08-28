@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=15 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_dn0bh"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dws7x0vgca6kx" path="res://art/temp,testing/characters/royal knights.jpg" id="8_ng1tp"]
 [ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
+[ext_resource type="Texture2D" uid="uid://blcn2ycrhm4pn" path="res://art/temp,testing/characters/1207232.jpg" id="14_38odb"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dn0bh")
@@ -86,9 +87,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="CharacterL" type="TextureRect" parent="Node2D"]
-offset_top = 300.0
+offset_top = 296.0
 offset_right = 400.0
-offset_bottom = 1080.0
+offset_bottom = 1076.0
 texture = ExtResource("7_v18d3")
 expand_mode = 1
 
@@ -101,7 +102,6 @@ texture = ExtResource("8_ng1tp")
 expand_mode = 1
 
 [node name="Node2D2" type="Node2D" parent="."]
-visible = false
 script = ExtResource("7_e7uic")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D2"]
@@ -113,6 +113,7 @@ offset_bottom = 1080.0
 texture = ExtResource("8_4y5g4")
 
 [node name="Character1" type="TextureRect" parent="Node2D2"]
+visible = false
 offset_top = 128.0
 offset_right = 632.0
 offset_bottom = 892.0
@@ -120,9 +121,15 @@ texture = ExtResource("10_k3cex")
 expand_mode = 1
 
 [node name="Character2" type="TextureRect" parent="Node2D2"]
+visible = false
 offset_left = 1384.0
 offset_top = 152.0
 offset_right = 1912.0
 offset_bottom = 850.0
 texture = ExtResource("11_aabfh")
 expand_mode = 1
+
+[node name="Zorua" type="Sprite2D" parent="Node2D2"]
+position = Vector2(1077.19, 394.189)
+scale = Vector2(0.138813, 0.146598)
+texture = ExtResource("14_38odb")
