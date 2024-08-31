@@ -57,30 +57,31 @@ public partial class text_panel : Panel
     private void ProceedToNextLine(Global global)
     {
         global.currentLine++;
-        
-        if(global.highlightLR[global.currentLine] == "L")
-        {
-            characterL.Modulate = new Color(1, 1, 1, 1);
-            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-        }
-        else if(global.highlightLR[global.currentLine] == "R")
-        {
-            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            characterR.Modulate = new Color(1, 1, 1, 1);
-        }
-        else if(global.highlightLR[global.currentLine] == "B")
-        {
-            characterL.Modulate = new Color(1, 1, 1, 1);
-            characterR.Modulate = new Color(1, 1, 1, 1);
-        }else
-        {
-            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-        }
 
         // Steping through story
         if (global.currentLine < global.storylines.Count)
         {
+        
+            if(global.highlightLR[global.currentLine] == "L")
+            {
+                characterL.Modulate = new Color(1, 1, 1, 1);
+                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            }
+            else if(global.highlightLR[global.currentLine] == "R")
+            {
+                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+                characterR.Modulate = new Color(1, 1, 1, 1);
+            }
+            else if(global.highlightLR[global.currentLine] == "B")
+            {
+                characterL.Modulate = new Color(1, 1, 1, 1);
+                characterR.Modulate = new Color(1, 1, 1, 1);
+            }else
+            {
+                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            }
+            
             textLabel.Text = global.storylines[global.currentLine];
             characterNameL.Text = global.characterL[global.currentLine];
             characterNameR.Text = global.characterR[global.currentLine];
