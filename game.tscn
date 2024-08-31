@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=16 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game_view.cs" id="1_52if0"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dws7x0vgca6kx" path="res://art/temp,testing/characters/royal knights.jpg" id="8_ng1tp"]
 [ext_resource type="Script" path="res://input_process.cs" id="10_2fdjw"]
 [ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
+[ext_resource type="VideoStream" path="res://art/video/underwater.ogv" id="10_wdisn"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
 [ext_resource type="Texture2D" uid="uid://blcn2ycrhm4pn" path="res://art/temp,testing/characters/1207232.jpg" id="14_38odb"]
 
@@ -23,29 +24,42 @@ z_index = 50
 script = ExtResource("2_cag4s")
 
 [node name="FadeOut" type="TextureRect" parent="Image Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_5kh6s")
 
 [node name="FadeIn" type="TextureRect" parent="Image Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
 
 [node name="ZoomIn" type="TextureRect" parent="Image Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_ncaib")
 
 [node name="ZoomOut" type="TextureRect" parent="Image Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_ncaib")
 
 [node name="Background" type="TextureRect" parent="Image Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Image Process"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("10_wdisn")
+autoplay = true
+expand = true
+loop = true
 
 [node name="TextPanel" type="Panel" parent="Image Process"]
 z_index = 100
@@ -107,6 +121,7 @@ texture = ExtResource("8_ng1tp")
 expand_mode = 1
 
 [node name="Input Process" type="Node2D" parent="."]
+visible = false
 script = ExtResource("10_2fdjw")
 
 [node name="Camera2D" type="Camera2D" parent="Input Process"]
