@@ -1,88 +1,328 @@
 {
 	"Intro":[
 		{
-			"LCharacters":"A",
-			"RCharacters":"1",
-			"HighlightL/R":"",
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
 			"Line":"虽不知其起源，亦不晓其原理，但不知何时开始，一种奇特的生物忽然出现在了人类的视界里。",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"Bgm_history"
 		},
 		{
-			"LCharacters":"B",
-			"RCharacters":"2",
-			"HighlightL/R":"",
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
 			"Line":"这些生物们有着人类所无法媲美的力量与能力，让许多人心生畏惧的同时，也被许多人视为一种机遇与赐福。",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
-			"LCharacters":"C",
-			"RCharacters":"3",
-			"HighlightL/R":"",
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
 			"Line":"上到政府，下到百姓，人们对这种生物产生了好奇，进行了接触。",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"于是，从一开始的不适应，到后来的依赖共存；从小心翼翼的试探，到游刃有余的驱使；这种生物以一种超乎想象的速度，融入到了人类的社会之中。",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"但这种超乎寻常的融入速度，同样带来了一些弊端.....",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"MemoryFlash_intro_fight"
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"",
+			"HighlightLR":"L",
+			"Line":"领主·月，你又何苦继续负隅顽抗？大局已定。就算你和你的梦兽继续强撑，你也没有任何胜机。这样的行为只会让你失去贵族应有的体面。",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"MemoryFlash_intro_dual"
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"R",
+			"Line":"领主·星，那可未必.....你看，转机这不就来了吗？",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"R",
+			"Line":"飞龙兽，真龙吐息！",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"L",
+			"Line":"不好！凤凰兽快躲开！",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"L",
+			"Line":"....真没想到，你的梦兽居然还有余力发动真龙吐息。你藏得可真深啊，领主·月。",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"R",
+			"Line":"（微笑不语）",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"L",
+			"Line":"——但那又如何！即便这样子，你也不过是将我们拉到同等的状态罢了。",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"L",
+			"Line":"凤凰兽——来！",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"领主·星",
+			"RCharacters":"领主·月",
+			"HighlightLR":"R",
+			"Line":"呵，终于使出梦兽附体了吗？真是让我久等了！飞龙兽，来吧！",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"Bgm_fight"
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"MemoryFight_intro_fight_fathers"
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"MemoryFlash_intro_gainFirstMonster"
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"",
+			"HighlightLR":"L",
+			"Line":"（睡觉的时间到了，今天我想要听的故事书是....）",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"Bgm_thunderStorm"
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":"ChoiceSelection_intro_bookChoice"
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"R",
+			"Line":"是这本啊.....M1/M2，今天的故事讲述的是关于贤者·____的故事",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"R",
+			"Line":"十数个世纪前，有一种名为炼金术的神奇技术存在于世。而练习这种技术的人，则被称为炼金术师。",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"R",
+			"Line":"炼金术师们不仅能够点石成金，还可将树枝变成利剑、令坚甲化作泥土。而贤者正是将这一门技术发扬光大的人物。",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"R",
+			"Line":"贤者·____，她一生中做出了许多贡献，但其中，名声最响亮的发明毫无疑问就是那早已化作传说的贤者之石",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"R",
+			"Line":"贤者之石，又被称作万灵药、炼金之匙、生死破戒石、灵魂物质。贤者·____第一次使用它时.....",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
-			"Line":"",
-			"trigger":""
+			"HighlightLR":"",
+			"Line":"随着你的眼皮越来越重，母亲的声音似乎变得越来越小....",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"主角",
+			"RCharacters":"主角母亲",
+			"HighlightLR":"L",
+			"Line":"呼噜.....呼噜.....",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		},
 		{
 			"LCharacters":"",
 			"RCharacters":"",
-			"HighlightL/R":"",
+			"HighlightLR":"",
 			"Line":"",
-			"trigger":""
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
+		},
+		{
+			"LCharacters":"",
+			"RCharacters":"",
+			"HighlightLR":"",
+			"Line":"",
+			"triggerL":"",
+			"triggerR":"",
+			"triggerEvent":""
 		}
 	],
 	"Chapter0":[

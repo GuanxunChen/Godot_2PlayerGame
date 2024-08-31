@@ -11,7 +11,9 @@ public partial class Global : Node
 	public List<string> characterL = new List<string>();
 	public List<string> characterR = new List<string>();
 	public List<string> highlightLR = new List<string>();
-	public List<string> triggers = new List<string>();
+	public List<string> triggerL = new List<string>();
+	public List<string> triggerR = new List<string>();
+	public List<string> triggerEvent = new List<string>();
 
     public int currentLine = 0;
 
@@ -30,8 +32,10 @@ public partial class Global : Node
 		public string Line { get; set; }
 		public string LCharacters { get; set; }
 		public string RCharacters { get; set; }
-		public string HighlightL_R { get; set; }
-		public string triggerTag { get; set; }
+		public string HighlightLR { get; set; }
+		public string triggerTagL { get; set; }
+		public string triggerTagR { get; set; }
+		public string triggerTagEvent { get; set; }
 	}
 
     /// =====================================
@@ -55,8 +59,10 @@ public partial class Global : Node
 				storylines = data["Intro"].Select(story => story.Line).ToList();
 				characterL = data["Intro"].Select(story => story.LCharacters).ToList();
 				characterR = data["Intro"].Select(story => story.RCharacters).ToList();
-				highlightLR = data["Intro"].Select(story => story.HighlightL_R).ToList();
-				triggers = data["Intro"].Select(story => story.triggerTag).ToList();
+				highlightLR = data["Intro"].Select(story => story.HighlightLR).ToList();
+				triggerL = data["Intro"].Select(story => story.triggerTagL).ToList();
+				triggerR = data["Intro"].Select(story => story.triggerTagR).ToList();
+				triggerEvent = data["Intro"].Select(story => story.triggerTagEvent).ToList();
 			}
 			else
 			{

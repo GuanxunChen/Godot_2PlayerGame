@@ -22,7 +22,7 @@ public partial class text_panel : Panel
         characterR = GetNode<TextureRect>("../CharacterR");
         
         // Check if story exist
-        if (global.storylines.Count > 0)
+        if (global.storylines.Count >= 0)
         {
             // Set the text of the label to the current storyline
             textLabel.Text = global.storylines[global.currentLine];
@@ -47,17 +47,6 @@ public partial class text_panel : Panel
     {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
-            isLeftPortraitActive = !isLeftPortraitActive; // toggle the state
-            if (isLeftPortraitActive)
-            {
-                characterL.Modulate = new Color(1, 1, 1, 1);
-                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            }
-            else
-            {
-                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-                characterR.Modulate = new Color(1, 1, 1, 1);
-            }
             ProceedToNextLine(global);
         }
     }
@@ -68,6 +57,26 @@ public partial class text_panel : Panel
     private void ProceedToNextLine(Global global)
     {
         global.currentLine++;
+        
+        if(global.highlightLR[global.currentLine] == "L")
+        {
+            characterL.Modulate = new Color(1, 1, 1, 1);
+            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+        }
+        else if(global.highlightLR[global.currentLine] == "R")
+        {
+            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            characterR.Modulate = new Color(1, 1, 1, 1);
+        }
+        else if(global.highlightLR[global.currentLine] == "B")
+        {
+            characterL.Modulate = new Color(1, 1, 1, 1);
+            characterR.Modulate = new Color(1, 1, 1, 1);
+        }else
+        {
+            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+        }
 
         // Steping through story
         if (global.currentLine < global.storylines.Count)
@@ -80,6 +89,12 @@ public partial class text_panel : Panel
         {
             HidePanel();
         }
+        
+        //GD.Print("Current line#: ", global.currentLine);
+        //GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
+        //GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
+        //GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
+
     }
 
     private void JumpToStoryLine(Global global, int line)
