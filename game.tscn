@@ -120,6 +120,36 @@ offset_bottom = 1080.0
 texture = ExtResource("8_ng1tp")
 expand_mode = 1
 
+[node name="L_Character_Protagonist1" type="TextureRect" parent="Image Process"]
+z_index = 99
+z_as_relative = false
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 1076.0
+
+[node name="L_Character_Protagonist2" type="TextureRect" parent="Image Process"]
+z_index = 99
+z_as_relative = false
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 1076.0
+
+[node name="R_Character_Protagonist1" type="TextureRect" parent="Image Process"]
+z_index = 99
+z_as_relative = false
+offset_left = 1520.0
+offset_top = 300.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="R_Character_Protagonist2" type="TextureRect" parent="Image Process"]
+z_index = 99
+z_as_relative = false
+offset_left = 1520.0
+offset_top = 300.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="Input Process" type="Node2D" parent="."]
 visible = false
 script = ExtResource("10_2fdjw")
