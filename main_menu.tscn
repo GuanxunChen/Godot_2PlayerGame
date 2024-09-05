@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_rwoyd")
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -61,3 +62,23 @@ text = "Quit"
 
 [node name="NetworkManager" type="Node2D" parent="."]
 script = ExtResource("3_gsq10")
+
+[node name="JoinServerWindow" type="Window" parent="."]
+position = Vector2i(715, 500)
+size = Vector2i(175, 200)
+
+[node name="IPInput" type="LineEdit" parent="JoinServerWindow"]
+offset_top = 20.0
+offset_right = 67.0625
+offset_bottom = 51.0
+
+[node name="PortInput" type="LineEdit" parent="JoinServerWindow"]
+offset_top = 85.0
+offset_right = 67.0625
+offset_bottom = 116.0
+
+[node name="ConnectButton" type="Button" parent="JoinServerWindow"]
+offset_top = 135.0
+offset_right = 72.0
+offset_bottom = 166.0
+text = "Connect"
