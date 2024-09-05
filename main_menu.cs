@@ -17,6 +17,7 @@ public partial class main_menu : Control
         Button settingButton = GetNode<Button>("Button Menu/Settings");
         Button quitButton = GetNode<Button>("Button Menu/Quit");
         Button multiplayerButton = GetNode<Button>("Button Menu/Start Multiplayer Game");
+        Button joinmultiplayerButton = GetNode<Button>("Button Menu/Join Multiplayer Game");
         
         // Get the NetworkManager node
         _networkManager = GetNode<NetworkManager>("NetworkManager");
@@ -26,7 +27,7 @@ public partial class main_menu : Control
         settingButton.Pressed += OnSettingButtonPressed;
         quitButton.Pressed += OnQuitButtonPressed;
         multiplayerButton.Pressed += OnMultiplayerButtonPressed;
-
+        joinmultiplayerButton.Pressed += OnJoinMultiplayerButtonPressed;
 
 
     }
@@ -83,6 +84,17 @@ public partial class main_menu : Control
         LoadGameScene();
     }
 
+    private void OnJoinMultiplayerButtonPressed()
+    {
+            // Assume this is a client connecting to an existing host
+        string hostIP = "192.168.1.169"; // Replace with actual IP address
+        int port = 12345; // Replace with the port used by the host
+
+        // Start as client
+        _networkManager.JoinServer(hostIP, port);
+        // Load the game scene
+        LoadGameScene();
+    }
     private void LoadGameScene()
     {
         // Load the game scene
