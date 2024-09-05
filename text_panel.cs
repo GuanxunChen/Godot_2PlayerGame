@@ -9,6 +9,10 @@ public partial class text_panel : Panel
     private Label characterNameR;
     private TextureRect characterL;
     private TextureRect characterR;
+    private TextureRect characterL_Protagonist1;
+    private TextureRect characterR_Protagonist1;
+    private TextureRect characterL_Protagonist2;
+    private TextureRect characterR_Protagonist2;
     private bool isLeftPortraitActive = true;
 
     public override void _Ready()
@@ -20,6 +24,11 @@ public partial class text_panel : Panel
         characterNameR = GetNode<Label>("CharacterNameR");
         characterL = GetNode<TextureRect>("../CharacterL");
         characterR = GetNode<TextureRect>("../CharacterR");
+        characterL_Protagonist1 = GetNode<TextureRect>("../L_Character_Protagonist1");
+        characterR_Protagonist1 = GetNode<TextureRect>("../R_Character_Protagonist1");
+        characterL_Protagonist2 = GetNode<TextureRect>("../L_Character_Protagonist2");
+        characterR_Protagonist2 = GetNode<TextureRect>("../R_Character_Protagonist2");
+
         
         // Check if story exist
         if (global.storylines.Count >= 0)
