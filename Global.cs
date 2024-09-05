@@ -15,6 +15,7 @@ public partial class Global : Node
 	public List<string> triggerR = new List<string>();
 	public List<string> triggerEvent = new List<string>();
 
+	public bool multiplayer_game = false;
     public int currentLine = 0;
 
     public override void _Ready()

@@ -8,9 +8,12 @@ public partial class main_menu : Control
     // Linking to the game scene
     private const string GameScenePath = "res://game.tscn";
     private NetworkManager _networkManager;
+    private Global global;
 
     public override void _Ready()
     {
+        global = (Global)GetNode("/root/Global");
+
 		// Linking to Buttons
         Button startButton = GetNode<Button>("Button Menu/Start Game");
         Button loadButton = GetNode<Button>("Button Menu/Load Game");
@@ -77,6 +80,8 @@ public partial class main_menu : Control
     }
     private void OnMultiplayerButtonPressed()
     {
+        global.multiplayer_game = true;
+
         // Start the server or connect to one
         _networkManager.StartServer(12345); // or _networkManager.JoinServer("127.0.0.1", 12345);
 
