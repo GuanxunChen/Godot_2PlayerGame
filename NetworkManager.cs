@@ -4,8 +4,8 @@ using System;
 
 public partial class NetworkManager : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-	private ENetMultiplayerPeer _peer;
+    // Called when the node enters the scene tree for the first time.
+    private ENetMultiplayerPeer _peer;
 
     public override void _Ready()
     {
@@ -18,8 +18,8 @@ public partial class NetworkManager : Node2D
         // JoinServer("127.0.0.1", 12345);
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public void StartServer(int port)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public void StartServer(int port)
     {
         _peer = new ENetMultiplayerPeer();
         Error result = _peer.CreateServer(port, 4); // Port 12345, max 4 clients
@@ -28,13 +28,19 @@ public partial class NetworkManager : Node2D
             GD.PrintErr("Failed to create server: " + result);
             return;
         }
+        // Wait for the server to start
+        while (_peer.GetConnectionStatus() == ENetMultiplayerPeer.ConnectionStatus.Disconnected)
+        {
+            _peer.Poll();
+            OS.DelayMsec(10); // wait 10ms
+        }
         Multiplayer.MultiplayerPeer = _peer;
         Multiplayer.PeerConnected += OnPeerConnected;
         Multiplayer.PeerDisconnected += OnPeerDisconnected;
 
         GD.Print("Server started on port " + port);
     }
-	public void JoinServer(string address, int port)
+    public void JoinServer(string address, int port)
     {
         _peer = new ENetMultiplayerPeer();
         Error result = _peer.CreateClient(address, port);
