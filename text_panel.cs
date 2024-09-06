@@ -104,7 +104,6 @@ public partial class text_panel : Panel
         //GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
         //GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
         //GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
-
     }
 
     private void JumpToStoryLine(Global global, int line)
@@ -119,6 +118,21 @@ public partial class text_panel : Panel
         else
         {
             HidePanel();
+        }
+    }
+    private void JumpToLineById(string id)
+    {
+        if (global.storyIdIndexMap.ContainsKey(id))
+        {
+            global.currentLine = global.storyIdIndexMap[id];
+
+            textLabel.Text = global.storylines[global.currentLine];
+            characterNameL.Text = global.characterL[global.currentLine];
+            characterNameR.Text = global.characterR[global.currentLine];
+        }
+        else
+        {
+            GD.PrintErr($"Line with id {id} not found.");
         }
     }
 

@@ -14,6 +14,7 @@ public partial class Global : Node
 	public List<string> triggerL = new List<string>();
 	public List<string> triggerR = new List<string>();
 	public List<string> triggerEvent = new List<string>();
+	public Dictionary<string, int> storyIdIndexMap = new Dictionary<string, int>();
 
 	public bool multiplayer_game = false;
     public int currentLine = 0;
@@ -30,6 +31,7 @@ public partial class Global : Node
 	public class StoryLine
 	{
 		// Getter and Setters
+    	public string id { get; set; }
 		public string Line { get; set; }
 		public string LCharacters { get; set; }
 		public string RCharacters { get; set; }
@@ -64,6 +66,11 @@ public partial class Global : Node
 				triggerL = data["Intro"].Select(story => story.triggerTagL).ToList();
 				triggerR = data["Intro"].Select(story => story.triggerTagR).ToList();
 				triggerEvent = data["Intro"].Select(story => story.triggerTagEvent).ToList();
+				
+				for (int i = 0; i < data["Intro"].Count; i++)
+				{
+					storyIdIndexMap[data["Intro"][i].id] = i;
+				}
 			}
 			else
 			{
