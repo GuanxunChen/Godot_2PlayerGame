@@ -60,40 +60,44 @@ public partial class text_panel : Panel
         // Steping through story
         if (global.currentLine < global.storylines.Count)
         {
-        
-            if(global.highlightLR[global.currentLine] == "L")
-            {
-                characterL.Modulate = new Color(1, 1, 1, 1);
-                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            }
-            else if(global.highlightLR[global.currentLine] == "R")
-            {
-                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-                characterR.Modulate = new Color(1, 1, 1, 1);
-            }
-            else if(global.highlightLR[global.currentLine] == "B")
-            {
-                characterL.Modulate = new Color(1, 1, 1, 1);
-                characterR.Modulate = new Color(1, 1, 1, 1);
-            }else
-            {
-                characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-                characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
-            }
-            
-            textLabel.Text = global.storylines[global.currentLine];
-            characterNameL.Text = global.characterL[global.currentLine];
-            characterNameR.Text = global.characterR[global.currentLine];
+            updateTextPanel(global);
         }
         else
         {
             HidePanel();
         }
         
-        //GD.Print("Current line#: ", global.currentLine);
-        //GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
-        //GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
-        //GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
+        GD.Print("Current line#: ", global.currentLine);
+        GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
+        GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
+        GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
+    }
+
+    private void updateTextPanel(Global global)
+    {
+        if(global.highlightLR[global.currentLine] == "L")
+        {
+            characterL.Modulate = new Color(1, 1, 1, 1);
+            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+        }
+        else if(global.highlightLR[global.currentLine] == "R")
+        {
+            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            characterR.Modulate = new Color(1, 1, 1, 1);
+        }
+        else if(global.highlightLR[global.currentLine] == "B")
+        {
+            characterL.Modulate = new Color(1, 1, 1, 1);
+            characterR.Modulate = new Color(1, 1, 1, 1);
+        }else
+        {
+            characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+            characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
+        }
+        
+        textLabel.Text = global.storylines[global.currentLine];
+        characterNameL.Text = global.characterL[global.currentLine];
+        characterNameR.Text = global.characterR[global.currentLine];
     }
 
     private void JumpToStoryLine(Global global, int line)
@@ -101,9 +105,8 @@ public partial class text_panel : Panel
         // Steping through story
         if (line < global.storylines.Count)
         {
-            textLabel.Text = global.storylines[line];
-            characterNameL.Text = global.characterL[global.currentLine];
-            characterNameR.Text = global.characterR[global.currentLine];
+            global.currentLine = line;
+            updateTextPanel(global);
         }
         else
         {
@@ -115,10 +118,7 @@ public partial class text_panel : Panel
         if (global.storyIdIndexMap.ContainsKey(id))
         {
             global.currentLine = global.storyIdIndexMap[id];
-
-            textLabel.Text = global.storylines[global.currentLine];
-            characterNameL.Text = global.characterL[global.currentLine];
-            characterNameR.Text = global.characterR[global.currentLine];
+            updateTextPanel(global);
         }
         else
         {
