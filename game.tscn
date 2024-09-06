@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=20 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game_view.cs" id="1_52if0"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
 [ext_resource type="VideoStream" path="res://art/video/underwater.ogv" id="10_wdisn"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
+[ext_resource type="Texture2D" uid="uid://1m5tapqckfmo" path="res://art/temp,testing/characters/IMG_E1644.JPG" id="11_grfth"]
+[ext_resource type="Texture2D" uid="uid://bcabd5cfe3xw6" path="res://art/temp,testing/characters/IMG_E1644pressed.JPG" id="12_p1o6i"]
+[ext_resource type="Texture2D" uid="uid://duvtsyr5pbr2f" path="res://art/temp,testing/characters/Sakuyamon.jpg" id="13_87vjw"]
+[ext_resource type="Texture2D" uid="uid://c2bm8q16yrp2x" path="res://art/temp,testing/characters/Sakuyamonpressed.jpg" id="14_2otxx"]
 [ext_resource type="Texture2D" uid="uid://blcn2ycrhm4pn" path="res://art/temp,testing/characters/1207232.jpg" id="14_38odb"]
 
 [node name="Game View" type="Node2D"]
@@ -60,14 +64,17 @@ stream = ExtResource("10_wdisn")
 autoplay = true
 expand = true
 loop = true
+metadata/_edit_lock_ = true
 
 [node name="TextPanel" type="Panel" parent="Image Process"]
+visible = false
 z_index = 100
 z_as_relative = false
 offset_top = 700.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("5_i61md")
+metadata/_edit_lock_ = true
 
 [node name="Texts" type="Label" parent="Image Process/TextPanel"]
 visibility_layer = 16
@@ -109,6 +116,7 @@ offset_right = 400.0
 offset_bottom = 1076.0
 texture = ExtResource("7_v18d3")
 expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="CharacterR" type="TextureRect" parent="Image Process"]
 z_index = 99
@@ -119,6 +127,63 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("8_ng1tp")
 expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="PopupPanel" type="PopupPanel" parent="Image Process"]
+initial_position = 1
+size = Vector2i(1783, 930)
+visible = true
+wrap_controls = false
+unresizable = false
+
+[node name="Button" type="Button" parent="Image Process/PopupPanel"]
+visible = false
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1779.0
+offset_bottom = 926.0
+text = "Hello
+"
+
+[node name="Button2" type="Button" parent="Image Process/PopupPanel"]
+visible = false
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1779.0
+offset_bottom = 926.0
+text = "Hello 2
+"
+
+[node name="Character1" type="TextureButton" parent="Image Process/PopupPanel"]
+layout_direction = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -500.0
+offset_right = 600.0
+offset_bottom = 500.0
+grow_vertical = 2
+texture_normal = ExtResource("11_grfth")
+texture_pressed = ExtResource("12_p1o6i")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Character2" type="TextureButton" parent="Image Process/PopupPanel"]
+layout_direction = 2
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -500.0
+offset_bottom = 500.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("13_87vjw")
+texture_pressed = ExtResource("14_2otxx")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="Input Process" type="Node2D" parent="."]
 visible = false
