@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=32 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game_view.cs" id="1_52if0"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -15,6 +15,7 @@
 [ext_resource type="VideoStream" path="res://art/video/underwater.ogv" id="10_wdisn"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
 [ext_resource type="Texture2D" uid="uid://1m5tapqckfmo" path="res://art/temp,testing/characters/IMG_E1644.JPG" id="11_grfth"]
+[ext_resource type="Script" path="res://choice_panel.cs" id="11_ogsaj"]
 [ext_resource type="Texture2D" uid="uid://bcabd5cfe3xw6" path="res://art/temp,testing/characters/IMG_E1644pressed.JPG" id="12_p1o6i"]
 [ext_resource type="Texture2D" uid="uid://duvtsyr5pbr2f" path="res://art/temp,testing/characters/Sakuyamon.jpg" id="13_87vjw"]
 [ext_resource type="Texture2D" uid="uid://c2bm8q16yrp2x" path="res://art/temp,testing/characters/Sakuyamonpressed.jpg" id="14_2otxx"]
@@ -142,13 +143,14 @@ texture = ExtResource("8_ng1tp")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="CharacterSelectPanel" type="PopupPanel" parent="Image Process"]
+[node name="Choice Panel" type="PopupPanel" parent="Image Process"]
 initial_position = 1
 size = Vector2i(1393, 895)
 wrap_controls = false
 unresizable = false
+script = ExtResource("11_ogsaj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Image Process/CharacterSelectPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Image Process/Choice Panel"]
 visible = false
 offset_left = 4.0
 offset_top = 4.0
@@ -157,7 +159,7 @@ offset_bottom = 891.0
 theme_override_constants/separation = 130
 alignment = 1
 
-[node name="Character1Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/HBoxContainer"]
+[node name="Character1Button" type="TextureButton" parent="Image Process/Choice Panel/HBoxContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -165,7 +167,7 @@ texture_normal = ExtResource("11_grfth")
 texture_pressed = ExtResource("12_p1o6i")
 ignore_texture_size = true
 
-[node name="Character2Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/HBoxContainer"]
+[node name="Character2Button" type="TextureButton" parent="Image Process/Choice Panel/HBoxContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -174,7 +176,7 @@ texture_pressed = ExtResource("14_2otxx")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="GridContainer" type="GridContainer" parent="Image Process/CharacterSelectPanel"]
+[node name="GridContainer" type="GridContainer" parent="Image Process/Choice Panel"]
 visible = false
 offset_left = 4.0
 offset_top = 4.0
@@ -184,7 +186,7 @@ theme_override_constants/h_separation = -1190
 theme_override_constants/v_separation = -10
 columns = 2
 
-[node name="Character1Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/GridContainer"]
+[node name="Character1Button" type="TextureButton" parent="Image Process/Choice Panel/GridContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -194,7 +196,7 @@ texture_pressed = ExtResource("12_p1o6i")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Character2Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/GridContainer"]
+[node name="Character2Button" type="TextureButton" parent="Image Process/Choice Panel/GridContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -203,7 +205,7 @@ texture_normal = ExtResource("15_v43a4")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="TextureButton" type="TextureButton" parent="Image Process/CharacterSelectPanel/GridContainer"]
+[node name="TextureButton" type="TextureButton" parent="Image Process/Choice Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -211,7 +213,7 @@ texture_normal = ExtResource("16_jl0mj")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="TextureButton2" type="TextureButton" parent="Image Process/CharacterSelectPanel/GridContainer"]
+[node name="TextureButton2" type="TextureButton" parent="Image Process/Choice Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -219,7 +221,7 @@ texture_normal = ExtResource("17_np61r")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Image Process/CharacterSelectPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Image Process/Choice Panel"]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 1389.0
@@ -229,13 +231,13 @@ size_flags_vertical = 3
 theme_override_constants/separation = -10
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Image Process/CharacterSelectPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Image Process/Choice Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -655
 alignment = 1
 
-[node name="Character1Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/VBoxContainer/HBoxContainer"]
+[node name="Character1Button" type="TextureButton" parent="Image Process/Choice Panel/VBoxContainer/HBoxContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -245,7 +247,7 @@ texture_pressed = ExtResource("12_p1o6i")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Character2Button" type="TextureButton" parent="Image Process/CharacterSelectPanel/VBoxContainer/HBoxContainer"]
+[node name="Character2Button" type="TextureButton" parent="Image Process/Choice Panel/VBoxContainer/HBoxContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
@@ -255,13 +257,13 @@ texture_pressed = ExtResource("18_502rr")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Image Process/CharacterSelectPanel/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Image Process/Choice Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -655
 alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Image Process/CharacterSelectPanel/VBoxContainer/HBoxContainer2"]
+[node name="TextureButton" type="TextureButton" parent="Image Process/Choice Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -270,7 +272,7 @@ texture_pressed = ExtResource("19_f4xsb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="TextureButton2" type="TextureButton" parent="Image Process/CharacterSelectPanel/VBoxContainer/HBoxContainer2"]
+[node name="TextureButton2" type="TextureButton" parent="Image Process/Choice Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
