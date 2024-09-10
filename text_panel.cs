@@ -23,12 +23,15 @@ public partial class text_panel : Panel
         // Check if story exist
         if (global.storylines.Count >= 0)
         {
+            characterL.Visible = false;
+            characterR.Visible = false;
+            
             // Set the text of the label to the current storyline
             textLabel.Text = global.storylines[global.currentLine];
 
             // Set character names label to current characters
-            characterNameL.Text = global.characterL[global.currentLine];
-            characterNameR.Text = global.characterR[global.currentLine];
+            characterNameL.Text = string.Join(", ", global.characterL[global.currentLine]);
+            characterNameR.Text = string.Join(", ", global.characterR[global.currentLine]);
 
             ShowPanel();
         }
@@ -60,17 +63,37 @@ public partial class text_panel : Panel
         // Steping through story
         if (global.currentLine < global.storylines.Count)
         {
+            GD.Print("Current line#: ", global.currentLine);
+            GD.Print("Current line#: ", global.storylines[global.currentLine]);
+            GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
+
+            //GD.Print("Current CharacterL: ", string.Join(", ", global.characterL[global.currentLine]));
+            GD.Print("Current CharacterL:");
+            foreach (var character in global.characterL[global.currentLine])
+            {
+                GD.Print(character);
+            }
+
+            //GD.Print("Current CharacterR: ", string.Join(", ", global.characterR[global.currentLine]));
+            GD.Print("Current CharacterR:");
+            foreach (var character in global.characterR[global.currentLine])
+            {
+                GD.Print(character);
+            }
+            
+            //GD.Print("Current trigger events: ", string.Join(", ", global.triggerTagEvent[global.currentLine]));
+            GD.Print("Current trigger events:");
+            foreach (var triggerEvent in global.triggerTagEvent[global.currentLine])
+            {
+                GD.Print(triggerEvent);
+            }
+
             updateTextPanel(global);
         }
         else
         {
             HidePanel();
         }
-        
-        GD.Print("Current line#: ", global.currentLine);
-        GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
-        GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
-        GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
     }
     
     /// <summary>
@@ -85,6 +108,23 @@ public partial class text_panel : Panel
     // <param name= "global">The Global object containing the current storyline and character information.</param>
     private void updateTextPanel(Global global)
     {
+        foreach (var triggerEvent in global.triggerTagEvent[global.currentLine])
+        {
+            switch(triggerEvent)
+            {
+                case "CharacterVisible_L":
+                    characterL.Visible = true;
+                    break;
+                case "CharacterVisible_R":
+                    characterR.Visible = true;
+                    break;
+                case "CharacterVisible_B":
+                    characterL.Visible = true;
+                    characterR.Visible = true;
+                    break;
+            }
+        }
+        
         if(global.highlightLR[global.currentLine] == "L") // Left Character
         {
             characterL.Modulate = new Color(1, 1, 1, 1);
@@ -106,8 +146,8 @@ public partial class text_panel : Panel
         }
         
         textLabel.Text = global.storylines[global.currentLine];
-        characterNameL.Text = global.characterL[global.currentLine];
-        characterNameR.Text = global.characterR[global.currentLine];
+        characterNameL.Text = string.Join(", ", global.characterL[global.currentLine]);
+        characterNameR.Text = string.Join(", ", global.characterR[global.currentLine]);
     }
 
     private void JumpToStoryLine(Global global, int line)

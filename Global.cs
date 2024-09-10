@@ -8,12 +8,12 @@ using System.Linq;
 public partial class Global : Node
 {
     public List<string> storylines = new List<string>();
-	public List<string> characterL = new List<string>();
-	public List<string> characterR = new List<string>();
 	public List<string> highlightLR = new List<string>();
-	public List<string> triggerL = new List<string>();
-	public List<string> triggerR = new List<string>();
-	public List<string> triggerEvent = new List<string>();
+	public List<List<string>> characterL = new List<List<string>>();
+	public List<List<string>> characterR = new List<List<string>>();
+	public List<List<string>> triggerTagL = new List<List<string>>();
+	public List<List<string>> triggerTagR = new List<List<string>>();
+	public List<List<string>> triggerTagEvent = new List<List<string>>();
 	public Dictionary<string, int> storyIdIndexMap = new Dictionary<string, int>();
 
 	public bool multiplayer_game = false;
@@ -33,12 +33,12 @@ public partial class Global : Node
 		// Getter and Setters
     	public string id { get; set; }
 		public string Line { get; set; }
-		public string LCharacters { get; set; }
-		public string RCharacters { get; set; }
 		public string HighlightLR { get; set; }
-		public string triggerTagL { get; set; }
-		public string triggerTagR { get; set; }
-		public string triggerTagEvent { get; set; }
+		public List<string> LCharacters { get; set; }
+		public List<string> RCharacters { get; set; }
+		public List<string> triggerL { get; set; }
+		public List<string> triggerR { get; set; }
+		public List<string> triggerEvent { get; set; }
 	}
 
     /// =====================================
@@ -63,9 +63,10 @@ public partial class Global : Node
 				characterL = data["Intro"].Select(story => story.LCharacters).ToList();
 				characterR = data["Intro"].Select(story => story.RCharacters).ToList();
 				highlightLR = data["Intro"].Select(story => story.HighlightLR).ToList();
-				triggerL = data["Intro"].Select(story => story.triggerTagL).ToList();
-				triggerR = data["Intro"].Select(story => story.triggerTagR).ToList();
-				triggerEvent = data["Intro"].Select(story => story.triggerTagEvent).ToList();
+				triggerTagL = data["Intro"].Select(story => story.triggerL).ToList();
+				triggerTagR = data["Intro"].Select(story => story.triggerR).ToList();
+				triggerTagEvent = data["Intro"].Select(story => story.triggerEvent).ToList();
+				//triggerTagEvent = data["Intro"].SelectMany(story => story.triggerEvent.ToList()).ToList();
 				
 				for (int i = 0; i < data["Intro"].Count; i++)
 				{
