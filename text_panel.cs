@@ -72,20 +72,30 @@ public partial class text_panel : Panel
         GD.Print("Current CharacterL: ", global.characterL[global.currentLine]);
         GD.Print("Current CharacterR: ", global.characterR[global.currentLine]);
     }
-
+    
+    /// <summary>
+    /// Updates the text panel based on the current storyline and character information.
+    /// 
+    /// This function takes a Global object as a parameter, which contains the current storyline, 
+    /// character information, and other relevant data. It uses this data to update the text 
+    /// label, character names, and other UI elements on the text panel.
+    /// 
+    /// The function also handles highlighting of characters based on the current storyline.
+    /// </summary>
+    // <param name= "global">The Global object containing the current storyline and character information.</param>
     private void updateTextPanel(Global global)
     {
-        if(global.highlightLR[global.currentLine] == "L")
+        if(global.highlightLR[global.currentLine] == "L") // Left Character
         {
             characterL.Modulate = new Color(1, 1, 1, 1);
             characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
         }
-        else if(global.highlightLR[global.currentLine] == "R")
+        else if(global.highlightLR[global.currentLine] == "R") // Right Character
         {
             characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
             characterR.Modulate = new Color(1, 1, 1, 1);
         }
-        else if(global.highlightLR[global.currentLine] == "B")
+        else if(global.highlightLR[global.currentLine] == "B") // Both
         {
             characterL.Modulate = new Color(1, 1, 1, 1);
             characterR.Modulate = new Color(1, 1, 1, 1);
