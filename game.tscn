@@ -38,35 +38,31 @@ bg_color = Color(0.442474, 0.595737, 0.894207, 1)
 script = ExtResource("1_52if0")
 
 [node name="Image Process" type="Node2D" parent="."]
+visible = false
 z_index = 50
 script = ExtResource("2_cag4s")
 
 [node name="FadeOut" type="TextureRect" parent="Image Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_5kh6s")
 
 [node name="FadeIn" type="TextureRect" parent="Image Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_g3hqw")
 
 [node name="ZoomIn" type="TextureRect" parent="Image Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_ncaib")
 
 [node name="ZoomOut" type="TextureRect" parent="Image Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_ncaib")
 
 [node name="Background" type="TextureRect" parent="Image Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_yvxsf")
@@ -148,13 +144,11 @@ metadata/_edit_lock_ = true
 [node name="CharacterSelectPanel" type="PopupPanel" parent="Image Process"]
 initial_position = 1
 size = Vector2i(1393, 895)
-visible = true
 wrap_controls = false
 unresizable = false
 script = ExtResource("11_78vlu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Image Process/CharacterSelectPanel"]
-visible = false
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 1389.0
@@ -180,7 +174,6 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="GridContainer" type="GridContainer" parent="Image Process/CharacterSelectPanel"]
-visible = false
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 1389.0
@@ -321,7 +314,6 @@ text = "Omnimon Zwart
 icon = ExtResource("24_2m5oc")
 
 [node name="Input Process" type="Node2D" parent="."]
-visible = false
 script = ExtResource("10_2fdjw")
 
 [node name="Camera2D" type="Camera2D" parent="Input Process"]

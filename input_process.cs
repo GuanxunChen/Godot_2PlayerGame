@@ -28,7 +28,6 @@ public partial class input_process : Node2D
         // The 'GetNode' method searches for a node with the specified name in the scene tree.
         // The Sprite2D node is used to display the Zorua character in the game.
         Zorua = GetNode<Sprite2D>("Zorua");
-
     }
 
     // This method is called every frame. The 'delta' parameter is the time
@@ -68,18 +67,22 @@ public partial class input_process : Node2D
         if (Input.IsKeyPressed(Key.W))
         {
             Zorua.Position += new Vector2(0, -speed);
+            camera.Position += new Vector2(0, -speed);
         }
         if (Input.IsKeyPressed(Key.A))
         {
             Zorua.Position += new Vector2(-speed, 0);
+            camera.Position += new Vector2(-speed, 0);
         }
         if (Input.IsKeyPressed(Key.S))
         {
             Zorua.Position += new Vector2(0, speed);
+            camera.Position += new Vector2(0, speed);
         }
         if (Input.IsKeyPressed(Key.D))
         {
             Zorua.Position += new Vector2(speed, 0);
+            camera.Position += new Vector2(speed, 0);
         }
     }
 }
