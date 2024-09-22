@@ -63,7 +63,7 @@ public partial class input_process : Node2D
             // The '1' value for the alpha channel means the node will be completely opaque.
             character1.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
         }
-
+/*
         if (Input.IsKeyPressed(Key.W))
         {
             Zorua.Position += new Vector2(0, -speed);
@@ -83,6 +83,7 @@ public partial class input_process : Node2D
         {
             Zorua.Position += new Vector2(speed, 0);
             camera.Position += new Vector2(speed, 0);
-        }
+        }*/
     }
+    
 }
