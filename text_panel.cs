@@ -23,7 +23,7 @@ public partial class text_panel : Panel
         // Check if story exist
         if (global.storylines.Count >= 0)
         {
-            characterL.Visible = false;
+            characterL.Visible = true;
             characterR.Visible = false;
             
             // Set the text of the label to the current storyline
@@ -121,6 +121,16 @@ public partial class text_panel : Panel
                 case "CharacterVisible_B":
                     characterL.Visible = true;
                     characterR.Visible = true;
+                    break;
+                case "CharacterInvisible_L":
+                    characterL.Visible = false;
+                    break;
+                case "CharacterInvisible_R":
+                    characterL.Visible = false;
+                    break;
+                case "CharacterInvisible_B":
+                    characterL.Visible = false;
+                    characterR.Visible = false;
                     break;
             }
         }

@@ -17,7 +17,7 @@ public partial class CharacterSelectPanel : PopupPanel
 		_character3Button = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/Character3Button");
 		_character4Button = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/Character4Button");
 
-		 _displayTextureRect = GetNode<TextureRect>("../CharacterL");
+		_displayTextureRect = GetNode<TextureRect>("/root/Game View/Image Process/CharacterL");
 
 		_character1Button.Pressed += OnCharacter1ButtonPressed;
 		_character2Button.Pressed += OnCharacter2ButtonPressed;
