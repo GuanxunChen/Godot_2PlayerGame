@@ -9,6 +9,7 @@ public partial class text_panel : Panel
     private Label characterNameR;
     private TextureRect characterL;
     private TextureRect characterR;
+    private TextureRect background;
 
     public override void _Ready()
     {
@@ -19,21 +20,12 @@ public partial class text_panel : Panel
         characterNameR = GetNode<Label>("CharacterNameR");
         characterL = GetNode<TextureRect>("../CharacterL");
         characterR = GetNode<TextureRect>("../CharacterR");
+        background = GetNode<TextureRect>("../Background");
         
         // Check if story exist
         if (global.storylines.Count >= 0)
         {
-            characterL.Visible = true;
-            characterR.Visible = false;
-            
-            // Set the text of the label to the current storyline
-            textLabel.Text = global.storylines[global.currentLine];
-
-            // Set character names label to current characters
-            characterNameL.Text = string.Join(", ", global.characterL[global.currentLine]);
-            characterNameR.Text = string.Join(", ", global.characterR[global.currentLine]);
-
-            ShowPanel();
+            updateTextPanel(global);
         }
         else
         {
@@ -41,7 +33,6 @@ public partial class text_panel : Panel
             HidePanel();
         }
     }
-
     /// =====================================
 	/// Event Listener Functions
 	/// =====================================
@@ -64,7 +55,7 @@ public partial class text_panel : Panel
         if (global.currentLine < global.storylines.Count)
         {
             GD.Print("Current line#: ", global.currentLine);
-            GD.Print("Current line#: ", global.storylines[global.currentLine]);
+            GD.Print("Current line: ", global.storylines[global.currentLine]);
             GD.Print("Current highlight: ", global.highlightLR[global.currentLine]);
 
             //GD.Print("Current CharacterL: ", string.Join(", ", global.characterL[global.currentLine]));
@@ -108,31 +99,55 @@ public partial class text_panel : Panel
     // <param name= "global">The Global object containing the current storyline and character information.</param>
     private void updateTextPanel(Global global)
     {
+        
         foreach (var triggerEvent in global.triggerTagEvent[global.currentLine])
         {
-            switch(triggerEvent)
+            string[] parts = triggerEvent.Split('_');
+            switch(parts[0])
             {
-                case "CharacterVisible_L":
-                    characterL.Visible = true;
+                case "CharacterVisible":
+                    if(parts[1] == "L")
+                    {
+                        characterL.Visible = true;
+                    }
+                    else if(parts[1] == "R")
+                    {
+                        characterR.Visible = true;
+                    }
+                    else if(parts[1] == "B")
+                    {
+                        characterL.Visible = true;
+                        characterR.Visible = true;
+                    }
                     break;
-                case "CharacterVisible_R":
-                    characterR.Visible = true;
+                case "CharacterInvisible":
+                    if(parts[1] == "L")
+                    {
+                        characterL.Visible = false;
+                    }
+                    else if(parts[1] == "R")
+                    {
+                        characterR.Visible = false;
+                    }
+                    else if(parts[1] == "B")
+                    {
+                        characterL.Visible = false;
+                        characterR.Visible = false;
+                    }
                     break;
-                case "CharacterVisible_B":
-                    characterL.Visible = true;
-                    characterR.Visible = true;
+                case "Background":
+                    background.Visible = false;
+                    if(parts.Length > 1)
+                    {
+                        background = GetNode<TextureRect>("../"+parts[1]);
+                    }
+                    else
+                    {
+                        GD.PrintErr("No background found:"+parts[1]+"\nError at Line:"+global.currentLine);
+                    }
+                    background.Visible = true;
                     break;
-                case "CharacterInvisible_L":
-                    characterL.Visible = false;
-                    break;
-                case "CharacterInvisible_R":
-                    characterL.Visible = false;
-                    break;
-                case "CharacterInvisible_B":
-                    characterL.Visible = false;
-                    characterR.Visible = false;
-                    break;
-            }
+            }   
         }
         
         if(global.highlightLR[global.currentLine] == "L") // Left Character
@@ -149,7 +164,8 @@ public partial class text_panel : Panel
         {
             characterL.Modulate = new Color(1, 1, 1, 1);
             characterR.Modulate = new Color(1, 1, 1, 1);
-        }else
+        }
+        else if(global.highlightLR[global.currentLine] != "")
         {
             characterL.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
             characterR.Modulate = new Color(0.501f, 0.501f, 0.501f, 1);
@@ -158,6 +174,8 @@ public partial class text_panel : Panel
         textLabel.Text = global.storylines[global.currentLine];
         characterNameL.Text = string.Join(", ", global.characterL[global.currentLine]);
         characterNameR.Text = string.Join(", ", global.characterR[global.currentLine]);
+
+        ShowPanel();
     }
 
     private void JumpToStoryLine(Global global, int line)

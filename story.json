@@ -7,7 +7,7 @@
 			"Line":"虽不知其起源，亦不晓其原理，但不知何时开始，一种奇特的生物忽然出现在了人类的视界里。",
 			"triggerL":[""],
 			"triggerR":[""],
-			"triggerEvent":["Bgm_history"],
+			"triggerEvent":["Background_Background-Test1","Bgm_history"],
 			"id":""
 		},
 		{

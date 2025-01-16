@@ -27,9 +27,7 @@ public partial class image_process : Node2D
 		fadeRect2 = GetNode<TextureRect>("FadeOut");
         zoomRect = GetNode<TextureRect>("ZoomIn");
         zoomRect2 = GetNode<TextureRect>("ZoomOut");
-
-        characterPortraitL.Visible = false;// fix the problem that CharacterL is visible from start even when called invisible
-        characterPortraitR.Visible = false;
+        
         // Fade in
         if (fadeRect != null)
         {
