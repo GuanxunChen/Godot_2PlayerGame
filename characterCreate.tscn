@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://402dcov3p0o7"]
 
 [ext_resource type="Script" path="res://CharacterCreate.cs" id="1_m2gkb"]
-[ext_resource type="Texture2D" uid="uid://cpx1wwxyuunmi" path="res://art/temp,testing/characterCreation/hair1.jpg" id="2_q1qsv"]
+[ext_resource type="Texture2D" uid="uid://cpx1wwxyuunmi" path="res://art/temp,testing/characterCreation/hairstyles/hair1.jpg" id="3_wvefi"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="10_8tqdm"]
 
 [node name="CharacterCreation" type="Node2D"]
@@ -13,6 +13,7 @@ offset_bottom = 1080.0
 texture = ExtResource("10_8tqdm")
 
 [node name="CharacterDisplay" type="Node2D" parent="."]
+position = Vector2(1200, 150)
 
 [node name="CharacterBody" type="Sprite2D" parent="CharacterDisplay"]
 
@@ -50,10 +51,43 @@ text = "<"
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_q1qsv")
+texture = ExtResource("3_wvefi")
 stretch_mode = 3
 
 [node name="Right Arrow" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = ">"
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "R"
+vertical_alignment = 1
+
+[node name="redSlider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+max_value = 255.0
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "G"
+vertical_alignment = 1
+
+[node name="greenSlider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+max_value = 255.0
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "B"
+vertical_alignment = 1
+
+[node name="blueSlider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+max_value = 255.0
