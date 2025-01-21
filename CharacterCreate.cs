@@ -10,33 +10,45 @@ public partial class CharacterCreate : Node2D
     	GD.Load<Texture2D>("res://art/temp,testing/characterCreation/hairstyles/hair2.jpg"),
     	GD.Load<Texture2D>("res://art/temp,testing/characterCreation/hairstyles/hair3.jpg")
     };
-    /*private string[] hairstyleTextures = {
-        "res://hair1.jpg",
-        "res://hair2.jpg",
-        "res://hair3.jpg"
-    };*/
+    private int currentOutfit = 0;
+    private Texture2D[] outfitImages = {
+        GD.Load<Texture2D>("res://art/temp,testing/characterCreation/outfits/outfit1.png"),
+    	GD.Load<Texture2D>("res://art/temp,testing/characterCreation/outfits/outfit2.png"),
+    	GD.Load<Texture2D>("res://art/temp,testing/characterCreation/outfits/outfit3.png"),
+    	GD.Load<Texture2D>("res://art/temp,testing/characterCreation/outfits/outfit4.png")
+    };
 
     // Nodes for customization
     //private Sprite2D hairSprite;
     private TextureRect hairstylePreview;
     private Sprite2D hairSprite;
-	private Button LeftArrow;
-	private Button RightArrow;
+    private TextureRect outfitPreview;
+    private Sprite2D outfitSprite;
+	private Button HairLeftArrow;
+	private Button HairRightArrow;
+    private Button OutfitLeftArrow;
+    private Button OutfitRightArrow;
     private HSlider redSlider, greenSlider, blueSlider;
 
     public override void _Ready()
     {
         // Get node references
         //hairSprite = GetNode<Sprite2D>("CharacterDisplay/Hair");
-        hairstylePreview = GetNode<TextureRect>("Control/VBoxContainer/HBoxContainer/TextureRect");
+        hairstylePreview = GetNode<TextureRect>("Control/VBoxContainer/Hairstyle/TextureRect");
         hairSprite = GetNode<Sprite2D>("CharacterDisplay/Hair");
 
-        
+        outfitPreview = GetNode<TextureRect>("Control/VBoxContainer/Outfit/TextureRect");
+        outfitSprite = GetNode<Sprite2D>("CharacterDisplay/Outfit");
 
-		LeftArrow = GetNode<Button>("Control/VBoxContainer/HBoxContainer/Left Arrow");
-		RightArrow = GetNode<Button>("Control/VBoxContainer/HBoxContainer/Right Arrow");
-		LeftArrow.Pressed += OnLeftButtonPressed;
-		RightArrow.Pressed += OnRightButtonPressed;
+		HairLeftArrow = GetNode<Button>("Control/VBoxContainer/Hairstyle/Left Arrow");
+		HairRightArrow = GetNode<Button>("Control/VBoxContainer/Hairstyle/Right Arrow");
+		HairLeftArrow.Pressed += OnLeftButtonPressed;
+		HairRightArrow.Pressed += OnRightButtonPressed;
+
+        OutfitLeftArrow = GetNode<Button>("Control/VBoxContainer/Outfit/Left Arrow");
+        OutfitRightArrow = GetNode<Button>("Control/VBoxContainer/Outfit/Right Arrow");
+        OutfitLeftArrow.Pressed += OnOutfitLeftButtonPressed;
+        OutfitRightArrow.Pressed += OnOutfitRightButtonPressed;
 
 		UpdateCharacter();
 
@@ -64,10 +76,11 @@ public partial class CharacterCreate : Node2D
     private void UpdateCharacter()
     {
         // Update character's hair texture
-        //hairSprite.Texture = GD.Load<Texture2D>(hairstyleTextures[currentHairstyle]);
         // Update preview image
         hairstylePreview.Texture = hairstyleImages[currentHairstyle];
         hairSprite.Texture = hairstyleImages[currentHairstyle];
+        outfitPreview.Texture = outfitImages[currentOutfit];
+        outfitSprite.Texture = outfitImages[currentOutfit];
     }
 
     // Button signals
@@ -79,6 +92,35 @@ public partial class CharacterCreate : Node2D
     private void OnRightButtonPressed()
     {
         ChangeHairstyle(1);
+    }
+    public void ChangeOutfit(int direction)
+    {
+        currentOutfit = (currentOutfit + direction) % outfitImages.Length;
+        if (currentOutfit < 0)
+        {
+            currentOutfit = outfitImages.Length - 1;
+        }
+        UpdateCharacter();
+    }
+
+    // Update character appearance and preview
+    /*private void UpdateOutfit()
+    {
+        // Update character's hair texture
+        // Update preview image
+        outfitPreview.Texture = outfitImages[currentOutfit];
+        hairSprite.Texture = hairstyleImages[currentHairstyle];
+    }*/
+
+    // Button signals
+    private void OnOutfitLeftButtonPressed()
+    {
+        ChangeOutfit(-1);
+    }
+
+    private void OnOutfitRightButtonPressed()
+    {
+        ChangeOutfit(1);
     }
 
     private void OnSliderValueChanged(double value)

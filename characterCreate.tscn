@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://402dcov3p0o7"]
+[gd_scene load_steps=5 format=3 uid="uid://402dcov3p0o7"]
 
 [ext_resource type="Script" path="res://CharacterCreate.cs" id="1_m2gkb"]
 [ext_resource type="Texture2D" uid="uid://cpx1wwxyuunmi" path="res://art/temp,testing/characterCreation/hairstyles/hair1.jpg" id="3_wvefi"]
+[ext_resource type="Texture2D" uid="uid://ckrytet7qnroi" path="res://art/temp,testing/characterCreation/outfits/outfit1.png" id="4_g14xw"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="10_8tqdm"]
 
 [node name="CharacterCreation" type="Node2D"]
@@ -13,13 +14,14 @@ offset_bottom = 1080.0
 texture = ExtResource("10_8tqdm")
 
 [node name="CharacterDisplay" type="Node2D" parent="."]
-position = Vector2(1200, 150)
+position = Vector2(1200, 435)
 
 [node name="CharacterBody" type="Sprite2D" parent="CharacterDisplay"]
 
-[node name="Hair" type="Sprite2D" parent="CharacterDisplay"]
-
 [node name="Outfit" type="Sprite2D" parent="CharacterDisplay"]
+offset = Vector2(0, 175)
+
+[node name="Hair" type="Sprite2D" parent="CharacterDisplay"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -39,22 +41,22 @@ theme_override_font_sizes/font_size = 32
 text = "Hairstyles"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="Hairstyle" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Left Arrow" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Left Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "<"
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 texture = ExtResource("3_wvefi")
 stretch_mode = 3
 
-[node name="Right Arrow" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Right Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = ">"
@@ -91,3 +93,29 @@ vertical_alignment = 1
 [node name="blueSlider" type="HSlider" parent="Control/VBoxContainer"]
 layout_mode = 2
 max_value = 255.0
+
+[node name="Outfits" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Outfit"
+horizontal_alignment = 1
+
+[node name="Outfit" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Left Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "<"
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Outfit"]
+layout_mode = 2
+texture = ExtResource("4_g14xw")
+stretch_mode = 3
+
+[node name="Right Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = ">"
