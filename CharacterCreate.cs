@@ -24,11 +24,15 @@ public partial class CharacterCreate : Node2D
     private Sprite2D hairSprite;
     private TextureRect outfitPreview;
     private Sprite2D outfitSprite;
+    private Sprite2D bodySprite;
 	private Button HairLeftArrow;
 	private Button HairRightArrow;
     private Button OutfitLeftArrow;
     private Button OutfitRightArrow;
     private HSlider redSlider, greenSlider, blueSlider;
+    private Button SaveButton;
+    private Color hairColor = new Color(1, 1, 1);
+    private const String SaveFilePath = "res://art/temp,testing/character_customization.cfg";
 
     public override void _Ready()
     {
@@ -36,6 +40,8 @@ public partial class CharacterCreate : Node2D
         //hairSprite = GetNode<Sprite2D>("CharacterDisplay/Hair");
         hairstylePreview = GetNode<TextureRect>("Control/VBoxContainer/Hairstyle/TextureRect");
         hairSprite = GetNode<Sprite2D>("CharacterDisplay/Hair");
+
+        bodySprite = GetNode<Sprite2D>("CharacterDisplay/CharacterBody");
 
         outfitPreview = GetNode<TextureRect>("Control/VBoxContainer/Outfit/TextureRect");
         outfitSprite = GetNode<Sprite2D>("CharacterDisplay/Outfit");
@@ -50,6 +56,9 @@ public partial class CharacterCreate : Node2D
         OutfitLeftArrow.Pressed += OnOutfitLeftButtonPressed;
         OutfitRightArrow.Pressed += OnOutfitRightButtonPressed;
 
+        SaveButton = GetNode<Button>("Control/VBoxContainer/Save");
+        SaveButton.Pressed += OnSaveButtonPressed;
+
 		UpdateCharacter();
 
         redSlider = GetNode<HSlider>("Control/VBoxContainer/redSlider");
@@ -62,6 +71,7 @@ public partial class CharacterCreate : Node2D
     }
 
     // Change hairstyle based on direction
+
     public void ChangeHairstyle(int direction)
     {
         currentHairstyle = (currentHairstyle + direction) % hairstyleImages.Length;
@@ -103,15 +113,6 @@ public partial class CharacterCreate : Node2D
         UpdateCharacter();
     }
 
-    // Update character appearance and preview
-    /*private void UpdateOutfit()
-    {
-        // Update character's hair texture
-        // Update preview image
-        outfitPreview.Texture = outfitImages[currentOutfit];
-        hairSprite.Texture = hairstyleImages[currentHairstyle];
-    }*/
-
     // Button signals
     private void OnOutfitLeftButtonPressed()
     {
@@ -136,8 +137,25 @@ public partial class CharacterCreate : Node2D
         float blue = (float)blueSlider.Value / 255f;
 
         // Update the modulate color of the Sprite2D node
+        hairColor = new Color(red, green, blue);
         hairSprite.Modulate = new Color(red, green, blue);
 
+    }
+
+    private void OnSaveButtonPressed()
+    {
+        var config = new ConfigFile();
+
+        // Save hairstyle, outfit, and RGB values
+        config.SetValue("Customization", "HairstyleIndex", currentHairstyle);
+        config.SetValue("Customization", "OutfitIndex", currentOutfit);
+        config.SetValue("Customization", "HairColorR", hairColor.R);
+        config.SetValue("Customization", "HairColorG", hairColor.G);
+        config.SetValue("Customization", "HairColorB", hairColor.B);
+
+        config.Save(SaveFilePath);
+
+        GD.Print("Customization saved!");
     }
 }
 
