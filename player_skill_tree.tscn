@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckrvgs4hp0ff"]
+
+[ext_resource type="Script" path="res://skilltree.cs" id="1_elh0a"]
+
+[node name="PlayerSkillTree" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GraphEdit" type="GraphEdit" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scroll_offset = Vector2(-40, -40)
+script = ExtResource("1_elh0a")
+metadata/_edit_lock_ = true
+
+[node name="Player" type="GraphNode" parent="Control/GraphEdit"]
+layout_mode = 2
+offset_left = 880.0
+offset_top = 512.0
+offset_right = 952.0
+offset_bottom = 576.0
+mouse_filter = 1
+position_offset = Vector2(840, 472)
+title = "player"
+
+[node name="Attack" type="GraphNode" parent="Control/GraphEdit"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 328.0
+offset_right = 674.0
+offset_bottom = 383.0
+mouse_filter = 1
+position_offset = Vector2(576, 288)
+title = "Attack"
+
+[node name="Pet" type="GraphNode" parent="Control/GraphEdit"]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 360.0
+offset_right = 1210.0
+offset_bottom = 415.0
+mouse_filter = 1
+position_offset = Vector2(1136, 320)
+title = "Pet"
+
+[node name="Passive" type="GraphNode" parent="Control/GraphEdit"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 688.0
+offset_right = 665.0
+offset_bottom = 743.0
+mouse_filter = 1
+position_offset = Vector2(560, 648)
+title = "Passive"
+
+[node name="Exploration" type="GraphNode" parent="Control/GraphEdit"]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 696.0
+offset_right = 1249.0
+offset_bottom = 751.0
+mouse_filter = 1
+position_offset = Vector2(1112, 656)
+title = "Exploration"
+
+[node name="Camera2D" type="Camera2D" parent="Control"]
