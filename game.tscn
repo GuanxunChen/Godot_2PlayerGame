@@ -18,11 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://c7qoj13tpwfha" path="res://art/temp,testing/characters/agumon.jpg" id="22_ef4m7"]
 [ext_resource type="Texture2D" uid="uid://dh5fcp287srqa" path="res://art/temp,testing/characters/omnimon.jpg" id="23_p1v0p"]
 [ext_resource type="Texture2D" uid="uid://weoi44qr7sec" path="res://art/temp,testing/characters/omnimon_zwart.jpg" id="24_2m5oc"]
-[ext_resource type="Texture2D" uid="uid://jwxufkw6humq" path="res://art/temp,testing/characters/purple_enemyNPC.jpg" id="31_4jxcg"]
 [ext_resource type="Script" path="res://Player.cs" id="31_devs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u67v"]
 bg_color = Color(0.442474, 0.595737, 0.894207, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sum51"]
+size = Vector2(272, 256)
 
 [node name="Game View" type="Node2D"]
 
@@ -181,18 +183,16 @@ text = "Omnimon Zwart
 icon = ExtResource("24_2m5oc")
 
 [node name="Input Process" type="Node2D" parent="."]
-visible = false
 script = ExtResource("10_2fdjw")
 
-[node name="Camera2D" type="Camera2D" parent="Input Process"]
-position = Vector2(960, 540)
-
 [node name="TextureRect" type="TextureRect" parent="Input Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("8_4y5g4")
 
 [node name="Character1" type="TextureRect" parent="Input Process"]
+visible = false
 offset_top = 128.0
 offset_right = 632.0
 offset_bottom = 892.0
@@ -200,6 +200,7 @@ texture = ExtResource("10_k3cex")
 expand_mode = 1
 
 [node name="Character2" type="TextureRect" parent="Input Process"]
+visible = false
 offset_left = 1384.0
 offset_top = 152.0
 offset_right = 1912.0
@@ -207,14 +208,18 @@ offset_bottom = 850.0
 texture = ExtResource("11_aabfh")
 expand_mode = 1
 
-[node name="Zorua" type="Sprite2D" parent="Input Process"]
-position = Vector2(1460, 540)
-scale = Vector2(0.138813, 0.146598)
-texture = ExtResource("14_38odb")
-
 [node name="Player" type="CharacterBody2D" parent="Input Process"]
 position = Vector2(500, 500)
 script = ExtResource("31_devs5")
 
+[node name="Camera2D" type="Camera2D" parent="Input Process/Player"]
+position = Vector2(460, 40)
+
 [node name="Sprite2D" type="Sprite2D" parent="Input Process/Player"]
-texture = ExtResource("31_4jxcg")
+position = Vector2(956, 36)
+scale = Vector2(0.1355, 0.148395)
+texture = ExtResource("14_38odb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Input Process/Player"]
+position = Vector2(956, 36)
+shape = SubResource("RectangleShape2D_sum51")
