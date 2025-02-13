@@ -209,17 +209,14 @@ texture = ExtResource("11_aabfh")
 expand_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="Input Process"]
-position = Vector2(500, 500)
+position = Vector2(960, 540)
 script = ExtResource("31_devs5")
 
 [node name="Camera2D" type="Camera2D" parent="Input Process/Player"]
-position = Vector2(460, 40)
 
 [node name="Sprite2D" type="Sprite2D" parent="Input Process/Player"]
-position = Vector2(956, 36)
 scale = Vector2(0.1355, 0.148395)
 texture = ExtResource("14_38odb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Input Process/Player"]
-position = Vector2(956, 36)
 shape = SubResource("RectangleShape2D_sum51")

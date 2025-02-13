@@ -6,7 +6,7 @@ public partial class input_process : Node2D
     private Camera2D camera;
     private TextureRect character1;
     private TextureRect character2;
-    private Sprite2D Zorua;
+    private Sprite2D sprite2d;
 
     // This method is called when the node is 'ready', which means that
     // all children have entered the scene tree and are initialized.
@@ -16,7 +16,7 @@ public partial class input_process : Node2D
         // Get the Camera2D node from the scene tree and assign it to the 'camera' variable.
         // The 'GetNode' method searches for a node with the specified name in the scene tree.
         // The Camera2D node is used to control the viewport of the game.
-        camera = GetNode<Camera2D>("Camera2D");
+        camera = GetNode<Camera2D>("Player/Camera2D");
 
         // Get the two TextureRect nodes from the scene tree and assign them to the 'character1' and 'character2' variables.
         // The 'GetNode' method searches for a node with the specified name in the scene tree.
@@ -27,7 +27,7 @@ public partial class input_process : Node2D
         // Get the Sprite2D node from the scene tree and assign it to the 'Zorua' variable.
         // The 'GetNode' method searches for a node with the specified name in the scene tree.
         // The Sprite2D node is used to display the Zorua character in the game.
-        Zorua = GetNode<Sprite2D>("Zorua");
+        sprite2d = GetNode<Sprite2D>("Player/Sprite2D");
     }
 
     // This method is called every frame. The 'delta' parameter is the time
