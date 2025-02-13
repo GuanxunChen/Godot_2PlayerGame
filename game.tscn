@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=23 format=3 uid="uid://404heh1vlyra"]
 
+[ext_resource type="Script" path="res://game_view.cs" id="1_5daf1"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
 [ext_resource type="Script" path="res://image_process.cs" id="2_cag4s"]
 [ext_resource type="Texture2D" uid="uid://cxf74q6vduq0" path="res://icon.svg" id="2_g3hqw"]
@@ -27,8 +28,10 @@ bg_color = Color(0.442474, 0.595737, 0.894207, 1)
 size = Vector2(272, 256)
 
 [node name="Game View" type="Node2D"]
+script = ExtResource("1_5daf1")
 
 [node name="Image Process" type="Node2D" parent="."]
+visible = false
 z_index = 50
 script = ExtResource("2_cag4s")
 
@@ -186,13 +189,11 @@ icon = ExtResource("24_2m5oc")
 script = ExtResource("10_2fdjw")
 
 [node name="TextureRect" type="TextureRect" parent="Input Process"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("8_4y5g4")
 
 [node name="Character1" type="TextureRect" parent="Input Process"]
-visible = false
 offset_top = 128.0
 offset_right = 632.0
 offset_bottom = 892.0
@@ -200,7 +201,6 @@ texture = ExtResource("10_k3cex")
 expand_mode = 1
 
 [node name="Character2" type="TextureRect" parent="Input Process"]
-visible = false
 offset_left = 1384.0
 offset_top = 152.0
 offset_right = 1912.0
