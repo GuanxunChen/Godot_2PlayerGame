@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://ckrvgs4hp0ff"]
+[gd_scene load_steps=2 format=3 uid="uid://ckrvgs4hp0ff"]
+
+[ext_resource type="Script" path="res://player_skill_tree.cs" id="1_7u0ds"]
 
 [node name="PlayerSkillTree" type="Node2D"]
+script = ExtResource("1_7u0ds")
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
+metadata/_edit_lock_ = true
 
 [node name="TextureButton" type="TextureButton" parent="Panel"]
 layout_mode = 1
@@ -22,54 +26,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 ignore_texture_size = true
+metadata/_edit_lock_ = true
 
 [node name="Player" type="Label" parent="Panel/TextureButton"]
-layout_mode = 0
-offset_right = 58.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Player"
 horizontal_alignment = 3
 vertical_alignment = 3
 uppercase = true
-
-[node name="Passive" type="Label" parent="Panel"]
-layout_mode = 0
-offset_top = 536.0
-offset_right = 960.0
-offset_bottom = 1076.0
-text = "Passive"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Pet" type="Label" parent="Panel"]
-offset_left = 952.0
-offset_right = 1912.0
-offset_bottom = 540.0
-text = "Pet"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="Exploration" type="Label" parent="Panel"]
-offset_left = 952.0
-offset_top = 536.0
-offset_right = 1912.0
-offset_bottom = 1076.0
-text = "Exploration"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_lock_ = true
-
-[node name="AttackLabel" type="Label" parent="Panel"]
+[node name="Attack" type="TextureButton" parent="Panel"]
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
-mouse_filter = 0
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Panel/Attack"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
 mouse_force_pass_scroll_events = false
 text = "Attack
 "
@@ -78,33 +62,92 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Sword" type="GraphNode" parent="Panel/AttackLabel"]
-visible = false
+[node name="Button" type="Button" parent="Panel/Attack"]
 layout_mode = 0
-offset_left = 776.0
-offset_top = 216.0
-offset_right = 833.0
-offset_bottom = 271.0
-title = "Sword"
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+metadata/_edit_lock_ = true
 
-[node name="Spear" type="GraphNode" parent="Panel/AttackLabel"]
-visible = false
+[node name="Passive" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 648.0
-offset_top = 312.0
-offset_right = 701.0
-offset_bottom = 367.0
-title = "Spear"
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 1080.0
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
 
-[node name="Bow" type="GraphNode" parent="Panel/AttackLabel"]
-visible = false
+[node name="Label" type="Label" parent="Panel/Passive"]
 layout_mode = 0
-offset_left = 568.0
-offset_top = 448.0
-offset_right = 610.0
-offset_bottom = 503.0
-title = "Bow"
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_force_pass_scroll_events = false
+text = "Passive"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="Panel/Passive"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+metadata/_edit_lock_ = true
+
+[node name="Pet" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 540.0
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Panel/Pet"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_force_pass_scroll_events = false
+text = "Pet"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="Panel/Pet"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+metadata/_edit_lock_ = true
+
+[node name="Exploration" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Panel/Exploration"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_force_pass_scroll_events = false
+text = "Exploration"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="Panel/Exploration"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Panel"]
-position = Vector2(952, 540)
+position = Vector2(960, 540)
 metadata/_edit_lock_ = true
