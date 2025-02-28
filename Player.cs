@@ -34,9 +34,13 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Y = direction.Y * Speed;
-			if(direction.X > 0)
+			if(direction.X < 0)
 			{
 				animationPlayer.CurrentAnimation = "walk_left";
+			}
+			if(direction.X > 0)
+			{
+				animationPlayer.CurrentAnimation = "walk_right";
 			}
 		}
 		else
