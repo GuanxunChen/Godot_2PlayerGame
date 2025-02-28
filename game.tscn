@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=28 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game_view.cs" id="1_5daf1"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cphs1omsehk64" path="res://art/temp,testing/characters/Yuuto.JPG" id="10_k3cex"]
 [ext_resource type="VideoStream" path="res://art/video/underwater.ogv" id="10_wdisn"]
 [ext_resource type="Texture2D" uid="uid://cajhjaxgvjndf" path="res://art/temp,testing/characters/Atem.JPG" id="11_aabfh"]
+[ext_resource type="Texture2D" uid="uid://cplpvbpwxoop8" path="res://art/temp,testing/backgrounds/map.png" id="16_dbfhf"]
 [ext_resource type="Texture2D" uid="uid://bdsprrcef728n" path="res://art/temp,testing/characterCreation/characterbody/Amelia_run_16x16.png" id="20_dv4nl"]
 [ext_resource type="Texture2D" uid="uid://bo6ubdfkpt5wm" path="res://art/temp,testing/characters/dorumon.jpg" id="21_lrcqb"]
 [ext_resource type="Texture2D" uid="uid://c7qoj13tpwfha" path="res://art/temp,testing/characters/agumon.jpg" id="22_ef4m7"]
@@ -278,12 +279,20 @@ icon = ExtResource("24_2m5oc")
 [node name="Input Process" type="Node2D" parent="."]
 script = ExtResource("10_2fdjw")
 
+[node name="TextureRect2" type="TextureRect" parent="Input Process"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(6, 6)
+texture = ExtResource("16_dbfhf")
+
 [node name="TextureRect" type="TextureRect" parent="Input Process"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("8_4y5g4")
 
 [node name="Character1" type="TextureRect" parent="Input Process"]
+visible = false
 offset_top = 128.0
 offset_right = 632.0
 offset_bottom = 892.0
@@ -291,6 +300,7 @@ texture = ExtResource("10_k3cex")
 expand_mode = 1
 
 [node name="Character2" type="TextureRect" parent="Input Process"]
+visible = false
 offset_left = 1384.0
 offset_top = 152.0
 offset_right = 1912.0
