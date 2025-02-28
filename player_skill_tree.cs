@@ -21,7 +21,7 @@ public partial class player_skill_tree : Node2D
 	private Line2D swordLine;
 	private Button crossSlash;
 	private Button starburstStream;
-	public int skillPoints = 10;
+	public int skillPoints = 3;
 	private Label skillPointsLabel;
 	private Label points;
 
@@ -73,7 +73,6 @@ public partial class player_skill_tree : Node2D
 		points.Text = skillPoints.ToString();
 
 		skillPointsLabel.Visible = false;
-		skillPointsLabel.Position = new Vector2(0, 0);
 
 
 		// Connect the 'pressed' signal of the 'attackButton' node to the 'attacklabelclicked' method.
@@ -89,11 +88,17 @@ public partial class player_skill_tree : Node2D
 		explorationButton.Pressed += explorationButtonClicked;
 		backExplorationButton.Pressed += backButtonClicked;
 		crossSlash.Pressed += crossSlashClicked;
+		starburstStream.Pressed += starburstStreamClicked;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		/*if (skillPoints == 0)
+		{
+			crossSlash.ToggleMode = false;
+			GD.Print("Not enough skill points");
+		}*/
 	}
 	// Attack
 	public void attackButtonClicked()
@@ -111,8 +116,25 @@ public partial class player_skill_tree : Node2D
 	}
 	public void crossSlashClicked()
 	{
+		if(skillPoints < 1)
+		{
+			crossSlash.ToggleMode = false;
+			GD.Print("Not enough skill points");
+			return;
+		}
 		starburstStream.Disabled = false;
 		skillPoints -= 1;
+		points.Text = skillPoints.ToString();
+	}
+	public void starburstStreamClicked()
+	{
+		if(skillPoints < 2)
+		{
+			starburstStream.ToggleMode = false;
+			GD.Print("Not enough skill points");
+			return;
+		}
+		skillPoints -= 2;
 		points.Text = skillPoints.ToString();
 	}
 	
@@ -174,6 +196,5 @@ public partial class player_skill_tree : Node2D
 		petButton.Disabled = false;
 		explorationButton.Disabled = false;
 		skillPointsLabel.Visible = false;
-		skillPointsLabel.Position = new Vector2(0, 0);
 	}
 }
