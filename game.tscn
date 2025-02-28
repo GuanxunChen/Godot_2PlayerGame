@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://404heh1vlyra"]
+[gd_scene load_steps=27 format=3 uid="uid://404heh1vlyra"]
 
 [ext_resource type="Script" path="res://game_view.cs" id="1_5daf1"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="1_yvxsf"]
@@ -24,22 +24,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u67v"]
 bg_color = Color(0.442474, 0.595737, 0.894207, 1)
 
-[sub_resource type="Animation" id="Animation_wlp77"]
-resource_name = "walk_left"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(0, 8, 16, 25), Rect2(16, 8, 16, 25), Rect2(32, 8, 16, 25), Rect2(48, 8, 16, 25), Rect2(64, 8, 16, 25)]
-}
-
 [sub_resource type="Animation" id="Animation_gangx"]
 length = 0.001
 tracks/0/type = "value"
@@ -54,11 +38,68 @@ tracks/0/keys = {
 "update": 0,
 "values": [Rect2(16, 8, 16, 25)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wlp77"]
+resource_name = "walk_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 8, 16, 25), Rect2(16, 8, 16, 25), Rect2(32, 8, 16, 25), Rect2(48, 8, 16, 25), Rect2(64, 8, 16, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_65csj"]
+resource_name = "walk_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 8, 16, 25), Rect2(16, 8, 16, 25), Rect2(32, 8, 16, 25), Rect2(48, 8, 16, 25), Rect2(64, 8, 16, 25)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35l5r"]
 _data = {
 "RESET": SubResource("Animation_gangx"),
-"walk_left": SubResource("Animation_wlp77")
+"walk_left": SubResource("Animation_65csj"),
+"walk_right": SubResource("Animation_wlp77")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sum51"]
@@ -254,6 +295,7 @@ script = ExtResource("31_devs5")
 [node name="Sprite2D" type="Sprite2D" parent="Input Process/Player"]
 scale = Vector2(4.561, 5)
 texture = ExtResource("20_dv4nl")
+flip_h = true
 region_enabled = true
 region_rect = Rect2(16, 8, 16, 25)
 
