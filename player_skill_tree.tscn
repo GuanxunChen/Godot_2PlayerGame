@@ -12,6 +12,20 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 metadata/_edit_lock_ = true
 
+[node name="SkillPoints" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 832.0
+offset_right = 913.0
+offset_bottom = 23.0
+text = "Skill Point:"
+metadata/_edit_lock_ = true
+
+[node name="points" type="Label" parent="Panel/SkillPoints"]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 120.0
+offset_bottom = 23.0
+
 [node name="TextureButton" type="TextureButton" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -69,6 +83,84 @@ offset_bottom = 8.0
 text = "Back"
 metadata/_edit_lock_ = true
 
+[node name="SwordLine" type="Line2D" parent="Panel/Attack"]
+z_index = -1
+position = Vector2(940, 520)
+points = PackedVector2Array(12, 16, -52, -232)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="AttackControl" type="Control" parent="Panel/Attack"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Sword" type="Label" parent="Panel/Attack/AttackControl"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 272.0
+offset_right = 929.0
+offset_bottom = 320.0
+text = "Sword"
+metadata/_edit_lock_ = true
+
+[node name="Cross Slash" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -160.0
+offset_right = 32.0
+offset_bottom = -129.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Cross Slash"
+metadata/_edit_lock_ = true
+
+[node name="Starburst Stream" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -240.0
+offset_top = -208.0
+offset_right = -99.0
+offset_bottom = -177.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Starburst Stream"
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="Panel/Attack/AttackControl/Sword"]
+z_index = -1
+points = PackedVector2Array(-16, -136, -168, -184)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D2" type="Line2D" parent="Panel/Attack/AttackControl/Sword"]
+z_index = -1
+points = PackedVector2Array(24, 8, -8, -144)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Bow" type="Label" parent="Panel/Attack/AttackControl"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 472.0
+offset_right = 745.0
+offset_bottom = 520.0
+text = "Slingshot"
+metadata/_edit_lock_ = true
+
+[node name="Spear" type="Label" parent="Panel/Attack/AttackControl"]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 352.0
+offset_right = 833.0
+offset_bottom = 400.0
+text = "Spear"
+metadata/_edit_lock_ = true
+
 [node name="Passive" type="TextureButton" parent="Panel"]
 layout_mode = 0
 offset_top = 540.0
@@ -94,6 +186,13 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Back"
+metadata/_edit_lock_ = true
+
+[node name="PassiveControl" type="Control" parent="Panel/Passive"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Pet" type="TextureButton" parent="Panel"]
@@ -123,6 +222,13 @@ offset_bottom = 8.0
 text = "Back"
 metadata/_edit_lock_ = true
 
+[node name="PetControl" type="Control" parent="Panel/Pet"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
 [node name="Exploration" type="TextureButton" parent="Panel"]
 layout_mode = 0
 offset_left = 960.0
@@ -149,6 +255,13 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Back"
+metadata/_edit_lock_ = true
+
+[node name="ExplorationControl" type="Control" parent="Panel/Exploration"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Panel"]
