@@ -24,6 +24,8 @@ public partial class player_skill_tree : Node2D
 	public int skillPoints = 3;
 	private Label skillPointsLabel;
 	private Label points;
+	public Boolean crossSlashPressed = false;
+	public Boolean starburstStreamPressed = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -122,9 +124,21 @@ public partial class player_skill_tree : Node2D
 			GD.Print("Not enough skill points");
 			return;
 		}
-		starburstStream.Disabled = false;
-		skillPoints -= 1;
-		points.Text = skillPoints.ToString();
+		else if (crossSlashPressed == false)
+		{
+			starburstStream.Disabled = false;
+			skillPoints -= 1;
+			points.Text = skillPoints.ToString();
+			crossSlashPressed = true;
+		}
+		else
+		{
+			starburstStream.Disabled = true;
+			skillPoints += 1;
+			points.Text = skillPoints.ToString();
+			crossSlashPressed = false;
+		}
+		
 	}
 	public void starburstStreamClicked()
 	{
@@ -134,8 +148,18 @@ public partial class player_skill_tree : Node2D
 			GD.Print("Not enough skill points");
 			return;
 		}
-		skillPoints -= 2;
-		points.Text = skillPoints.ToString();
+		else if (starburstStreamPressed == false)
+		{
+			skillPoints -= 2;
+			points.Text = skillPoints.ToString();
+			starburstStreamPressed = true;
+		}
+		else
+		{
+			skillPoints += 2;
+			points.Text = skillPoints.ToString();
+			starburstStreamPressed = false;
+		}
 	}
 	
 	// Pet
