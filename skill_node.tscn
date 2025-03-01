@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://byk4tw10eswc5"]
+[gd_scene format=3 uid="uid://bji4olyg75fub"]
 
 [node name="SkillNode" type="TextureButton"]
 offset_right = 40.0
