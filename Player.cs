@@ -42,6 +42,14 @@ public partial class Player : CharacterBody2D
 			{
 				animationPlayer.CurrentAnimation = "walk_right";
 			}
+			if(direction.Y < 0)
+			{
+				animationPlayer.CurrentAnimation = "walk_up";
+			}
+			if(direction.Y > 0)
+			{
+				animationPlayer.CurrentAnimation = "walk_down";
+			}
 		}
 		else
 		{
