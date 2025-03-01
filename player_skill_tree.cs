@@ -118,47 +118,62 @@ public partial class player_skill_tree : Node2D
 	}
 	public void crossSlashClicked()
 	{
-		if(skillPoints < 1)
-		{
-			crossSlash.ToggleMode = false;
-			GD.Print("Not enough skill points");
-			return;
-		}
-		else if (crossSlashPressed == false)
+		
+		if (crossSlashPressed == false)
 		{
 			starburstStream.Disabled = false;
 			skillPoints -= 1;
 			points.Text = skillPoints.ToString();
 			crossSlashPressed = true;
+			GD.Print(crossSlashPressed);
 		}
-		else
+		else if (crossSlashPressed == true && starburstStreamPressed == true)
 		{
 			starburstStream.Disabled = true;
 			skillPoints += 1;
 			points.Text = skillPoints.ToString();
 			crossSlashPressed = false;
+			starburstStreamPressed = false;
+			GD.Print(crossSlashPressed);
+			GD.Print(starburstStreamPressed);
+		}
+		else if (crossSlashPressed == true)
+		{
+			starburstStream.Disabled = true;
+			skillPoints += 1;
+			points.Text = skillPoints.ToString();
+			crossSlashPressed = false;
+			GD.Print(crossSlashPressed);
+		}
+		else if(skillPoints < 1)
+		{
+			crossSlash.ToggleMode = false;
+			GD.Print("Not enough skill points");
+			return;
 		}
 		
 	}
 	public void starburstStreamClicked()
 	{
-		if(skillPoints < 2)
-		{
-			starburstStream.ToggleMode = false;
-			GD.Print("Not enough skill points");
-			return;
-		}
-		else if (starburstStreamPressed == false)
+		if (starburstStreamPressed == false)
 		{
 			skillPoints -= 2;
 			points.Text = skillPoints.ToString();
 			starburstStreamPressed = true;
+			GD.Print(starburstStreamPressed);
 		}
-		else
+		else if (starburstStreamPressed == true)
 		{
 			skillPoints += 2;
 			points.Text = skillPoints.ToString();
 			starburstStreamPressed = false;
+			GD.Print(starburstStreamPressed);
+		}
+		else if(skillPoints < 2)
+		{
+			starburstStream.ToggleMode = false;
+			GD.Print("Not enough skill points");
+			return;
 		}
 	}
 	
