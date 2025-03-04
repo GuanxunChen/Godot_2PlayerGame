@@ -1,6 +1,60 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
+public class Skill
+{
+    public string Name { get; private set; }
+    public bool IsUnlocked { get; private set; }
+    public List<Skill> Dependencies { get; private set; }
+    public List<Skill> DependentSkills { get; private set; }
+    public int Cost { get; private set; }
+
+    public Skill(string name, int cost)
+    {
+        Name = name;
+        IsUnlocked = false;
+        Dependencies = new List<Skill>();
+        DependentSkills = new List<Skill>();
+        Cost = cost;
+    }
+
+    public void AddDependency(Skill dependency)
+    {
+        Dependencies.Add(dependency);
+        dependency.DependentSkills.Add(this);
+    }
+
+    public bool CanUnlock(int availableSkillPoints)
+    {
+        // Check if all dependencies are unlocked and there are enough skill points
+        return Dependencies.All(d => d.IsUnlocked) && availableSkillPoints >= Cost;
+    }
+
+    public void Unlock()
+    {
+        IsUnlocked = true;
+        GD.Print($"{Name} unlocked!");
+    }
+
+    public void Lock(ref int availableSkillPoints)
+	{
+		if (IsUnlocked)
+		{
+			availableSkillPoints += Cost; // Refund skill points
+			IsUnlocked = false;
+			GD.Print($"{Name} locked!");
+
+			// Recursively lock dependent skills
+			foreach (var dependentSkill in DependentSkills)
+			{
+				dependentSkill.Lock(ref availableSkillPoints);
+			}
+		}
+	}
+
+}
 public partial class player_skill_tree : Node2D
 {
 	private Camera2D camera;
@@ -26,13 +80,14 @@ public partial class player_skill_tree : Node2D
 	private Label points;
 	public Boolean crossSlashPressed = false;
 	public Boolean starburstStreamPressed = false;
+	private Skill crossSlashSkill;
+	private Skill starburstStreamSkill;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Get the Camera2D node from the scene tree and assign it to the 'camera' variable.
 		camera = GetNode<Camera2D>("Panel/Camera2D");
-
 
 		attackButton = GetNode<TextureButton>("Panel/Attack");
 		passiveButton = GetNode<TextureButton>("Panel/Passive");
@@ -69,7 +124,6 @@ public partial class player_skill_tree : Node2D
 		petControl.Visible = false;
 		explorationControl.Visible = false;
 
-		starburstStream.Disabled = true;
 
 		swordLine.Visible = false;
 		points.Text = skillPoints.ToString();
@@ -89,8 +143,16 @@ public partial class player_skill_tree : Node2D
 
 		explorationButton.Pressed += explorationButtonClicked;
 		backExplorationButton.Pressed += backButtonClicked;
-		crossSlash.Pressed += crossSlashClicked;
-		starburstStream.Pressed += starburstStreamClicked;
+		
+		crossSlashSkill = new Skill("CrossSlash", 1); // Cost: 1 skill point
+		starburstStreamSkill = new Skill("StarburstStream", 2); // Cost: 2 skill points
+
+		// Set dependencies
+		starburstStreamSkill.AddDependency(crossSlashSkill);
+
+		// Connect button signals
+		crossSlash.Pressed += () => OnSkillButtonPressed(crossSlashSkill);
+		starburstStream.Pressed += () => OnSkillButtonPressed(starburstStreamSkill);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -116,66 +178,7 @@ public partial class player_skill_tree : Node2D
 		skillPointsLabel.Visible = true;
 		skillPointsLabel.Position = new Vector2(832, 0);
 	}
-	public void crossSlashClicked()
-	{
-		
-		if (crossSlashPressed == false)
-		{
-			starburstStream.Disabled = false;
-			skillPoints -= 1;
-			points.Text = skillPoints.ToString();
-			crossSlashPressed = true;
-			GD.Print(crossSlashPressed);
-		}
-		else if (crossSlashPressed == true && starburstStreamPressed == true)
-		{
-			starburstStream.Disabled = true;
-			skillPoints += 1;
-			points.Text = skillPoints.ToString();
-			crossSlashPressed = false;
-			starburstStreamPressed = false;
-			GD.Print(crossSlashPressed);
-			GD.Print(starburstStreamPressed);
-		}
-		else if (crossSlashPressed == true)
-		{
-			starburstStream.Disabled = true;
-			skillPoints += 1;
-			points.Text = skillPoints.ToString();
-			crossSlashPressed = false;
-			GD.Print(crossSlashPressed);
-		}
-		else if(skillPoints < 1)
-		{
-			crossSlash.ToggleMode = false;
-			GD.Print("Not enough skill points");
-			return;
-		}
-		
-	}
-	public void starburstStreamClicked()
-	{
-		if (starburstStreamPressed == false)
-		{
-			skillPoints -= 2;
-			points.Text = skillPoints.ToString();
-			starburstStreamPressed = true;
-			GD.Print(starburstStreamPressed);
-		}
-		else if (starburstStreamPressed == true)
-		{
-			skillPoints += 2;
-			points.Text = skillPoints.ToString();
-			starburstStreamPressed = false;
-			GD.Print(starburstStreamPressed);
-		}
-		else if(skillPoints < 2)
-		{
-			starburstStream.ToggleMode = false;
-			GD.Print("Not enough skill points");
-			return;
-		}
-	}
+	
 	
 	// Pet
 	private void petButtonClicked()
@@ -235,5 +238,84 @@ public partial class player_skill_tree : Node2D
 		petButton.Disabled = false;
 		explorationButton.Disabled = false;
 		skillPointsLabel.Visible = false;
+	}
+
+	private void OnSkillButtonPressed(Skill skill)
+	{
+		if (!skill.IsUnlocked)
+		{
+			// Try to unlock the skill
+			if (skill.CanUnlock(skillPoints))
+			{
+				skill.Unlock();
+				skillPoints -= skill.Cost;
+				points.Text = skillPoints.ToString();
+
+				// Enable dependent skills if applicable
+				if (skill == crossSlashSkill)
+				{
+					starburstStream.Disabled = false;
+				}
+			}
+			else
+			{
+				GD.Print($"Cannot unlock {skill.Name}. Not enough skill points or dependencies not met.");
+			}
+		}
+		else
+		{
+			// Lock the skill and all dependent skills
+			LockSkillAndDependents(skill);
+		}
+
+		// Update UI
+		UpdateSkillButtons();
+	}
+	private void LockSkillAndDependents(Skill skill)
+	{
+		// Lock the skill and refund its cost
+		skill.Lock(ref skillPoints);
+		points.Text = skillPoints.ToString();
+
+		// Lock all dependent skills and refund their costs
+		foreach (var dependentSkill in skill.DependentSkills)
+		{
+			if (dependentSkill.IsUnlocked)
+			{
+				LockSkillAndDependents(dependentSkill); // Recursively lock dependents
+			}
+		}
+
+		// Disable dependent skill buttons if applicable
+		if (skill == crossSlashSkill)
+		{
+			starburstStream.Disabled = true;
+		}
+	}
+	private void UpdateSkillButtons()
+	{
+		// Update Cross Slash button
+		if (crossSlashSkill.IsUnlocked)
+		{
+			// If Cross Slash is already unlocked, enable the button so it can be locked
+			crossSlash.Disabled = false;
+		}
+		else
+		{
+			// If Cross Slash is not unlocked, disable the button if there aren't enough skill points
+			crossSlash.Disabled = !crossSlashSkill.CanUnlock(skillPoints);
+		}
+
+		// Update Starburst Stream button
+		if (starburstStreamSkill.IsUnlocked)
+		{
+			// If Starburst Stream is already unlocked, enable the button so it can be locked
+			starburstStream.Disabled = false;
+		}
+		else
+		{
+			// If Starburst Stream is not unlocked, disable the button if Cross Slash is not unlocked or there aren't enough skill points
+			starburstStream.Disabled = !crossSlashSkill.IsUnlocked || !starburstStreamSkill.CanUnlock(skillPoints);
+		}
 	}
 }
