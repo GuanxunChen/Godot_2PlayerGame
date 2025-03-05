@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://d14eq7u6qx0ky"]
+
+[ext_resource type="Script" path="res://code/character/player/Player.cs" id="1_mntu8"]
+[ext_resource type="Texture2D" uid="uid://bdsprrcef728n" path="res://art/temp,testing/characterCreation/characterbody/Amelia_run_16x16.png" id="2_jra13"]
+
+[sub_resource type="Animation" id="Animation_gangx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 8, 16, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bp6oo"]
+resource_name = "walk_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(288, 8, 16, 25), Rect2(304, 8, 16, 25), Rect2(320, 8, 16, 25), Rect2(336, 8, 16, 25), Rect2(352, 8, 16, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_65csj"]
+resource_name = "walk_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 8, 16, 25), Rect2(16, 8, 16, 25), Rect2(32, 8, 16, 25), Rect2(48, 8, 16, 25), Rect2(64, 8, 16, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_wlp77"]
+resource_name = "walk_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 8, 16, 25), Rect2(16, 8, 16, 25), Rect2(32, 8, 16, 25), Rect2(48, 8, 16, 25), Rect2(64, 8, 16, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3o3fr"]
+resource_name = "walk_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(96, 8, 16, 25), Rect2(112, 8, 16, 25), Rect2(128, 8, 16, 25), Rect2(144, 8, 16, 25), Rect2(160, 8, 16, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_35l5r"]
+_data = {
+"RESET": SubResource("Animation_gangx"),
+"walk_down": SubResource("Animation_bp6oo"),
+"walk_left": SubResource("Animation_65csj"),
+"walk_right": SubResource("Animation_wlp77"),
+"walk_up": SubResource("Animation_3o3fr")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6klor"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mntu8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.561, 5)
+texture = ExtResource("2_jra13")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(16, 8, 16, 25)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_35l5r")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_6klor")

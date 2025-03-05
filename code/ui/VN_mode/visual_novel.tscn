@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://n4ndm3vor41m"]
+
+[ext_resource type="Script" path="res://code/image_process.cs" id="1_1ma78"]
+[ext_resource type="Texture2D" uid="uid://g4ddd1wof6n3" path="res://art/temp,testing/characters/tempTesting.jpg" id="2_c4rl5"]
+[ext_resource type="Texture2D" uid="uid://cxf74q6vduq0" path="res://icon.svg" id="3_yf0lm"]
+[ext_resource type="Texture2D" uid="uid://lyytfqr8c1yr" path="res://art/temp,testing/backgrounds/halo.jpg" id="4_wk83o"]
+[ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="5_ajx4v"]
+[ext_resource type="VideoStream" path="res://art/video/underwater.ogv" id="6_jyi0a"]
+[ext_resource type="Script" path="res://code/text_panel.cs" id="7_rwi6e"]
+[ext_resource type="Texture2D" uid="uid://cvoh6noug7gds" path="res://art/temp,testing/characters/download.jpg" id="8_y0pe4"]
+[ext_resource type="Texture2D" uid="uid://dws7x0vgca6kx" path="res://art/temp,testing/characters/royal knights.jpg" id="9_6x7re"]
+[ext_resource type="Texture2D" uid="uid://bo6ubdfkpt5wm" path="res://art/temp,testing/characters/dorumon.jpg" id="10_ph37y"]
+[ext_resource type="Texture2D" uid="uid://c7qoj13tpwfha" path="res://art/temp,testing/characters/agumon.jpg" id="11_5ox5o"]
+[ext_resource type="Texture2D" uid="uid://dh5fcp287srqa" path="res://art/temp,testing/characters/omnimon.jpg" id="12_kpyyc"]
+[ext_resource type="Texture2D" uid="uid://weoi44qr7sec" path="res://art/temp,testing/characters/omnimon_zwart.jpg" id="13_tm31y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u67v"]
+bg_color = Color(0.442474, 0.595737, 0.894207, 1)
+
+[node name="Image Process" type="Node2D"]
+visible = false
+z_index = 50
+script = ExtResource("1_1ma78")
+
+[node name="FadeOut" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_c4rl5")
+
+[node name="FadeIn" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_yf0lm")
+
+[node name="ZoomIn" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_wk83o")
+
+[node name="ZoomOut" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_wk83o")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_ajx4v")
+
+[node name="Background-Test1" type="TextureRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_wk83o")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("6_jyi0a")
+autoplay = true
+expand = true
+loop = true
+metadata/_edit_lock_ = true
+
+[node name="TextPanel" type="Panel" parent="."]
+visible = false
+z_index = 100
+z_as_relative = false
+offset_top = 700.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("7_rwi6e")
+metadata/_edit_lock_ = true
+
+[node name="Texts" type="Label" parent="TextPanel"]
+visibility_layer = 16
+z_index = 101
+z_as_relative = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1895.0
+offset_bottom = 355.0
+theme_override_font_sizes/font_size = 25
+metadata/_edit_lock_ = true
+
+[node name="CharacterNameL" type="Label" parent="TextPanel"]
+z_index = 101
+z_as_relative = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -52.0
+offset_right = 448.0
+offset_bottom = 3.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CharacterNameR" type="Label" parent="TextPanel"]
+z_index = 101
+z_as_relative = false
+layout_mode = 0
+offset_left = 1472.0
+offset_top = -60.0
+offset_right = 1912.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="CharacterL" type="TextureRect" parent="."]
+visible = false
+z_index = 99
+z_as_relative = false
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 1076.0
+texture = ExtResource("8_y0pe4")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="CharacterR" type="TextureRect" parent="."]
+visible = false
+z_index = 99
+z_as_relative = false
+offset_left = 1520.0
+offset_top = 300.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_6x7re")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Choice panel" type="PopupPanel" parent="."]
+initial_position = 1
+size = Vector2i(1485, 1014)
+theme_override_styles/panel = SubResource("StyleBoxFlat_0u67v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Choice panel"]
+offset_right = 1485.0
+offset_bottom = 1014.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Choice 1" type="Button" parent="Choice panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dorumon"
+icon = ExtResource("10_ph37y")
+
+[node name="Choice 2" type="Button" parent="Choice panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Agumon"
+icon = ExtResource("11_5ox5o")
+
+[node name="Choice 3" type="Button" parent="Choice panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Omnimon"
+icon = ExtResource("12_kpyyc")
+
+[node name="Choice 4" type="Button" parent="Choice panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Omnimon Zwart
+"
+icon = ExtResource("13_tm31y")

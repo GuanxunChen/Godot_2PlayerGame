@@ -47,7 +47,7 @@ public partial class Global : Node
     private void LoadStory()
 	{
 		// Linking to storyline files
-		string filePath = ProjectSettings.GlobalizePath("res://story.json");
+		string filePath = ProjectSettings.GlobalizePath("res://code/story.json");
 
 		// Check if story exist
 		try

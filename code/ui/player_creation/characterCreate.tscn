@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://402dcov3p0o7"]
 
-[ext_resource type="Script" path="res://CharacterCreate.cs" id="1_m2gkb"]
+[ext_resource type="Script" path="res://code/ui/player_creation/CharacterCreate.cs" id="1_m2gkb"]
 [ext_resource type="Texture2D" uid="uid://s3eyqtu4w3p4" path="res://art/temp,testing/characterCreation/characterbody/2036 - Icon.png" id="3_geuum"]
 [ext_resource type="Texture2D" uid="uid://cpx1wwxyuunmi" path="res://art/temp,testing/characterCreation/hairstyles/hair1.jpg" id="3_wvefi"]
 [ext_resource type="Texture2D" uid="uid://ckrytet7qnroi" path="res://art/temp,testing/characterCreation/outfits/outfit1.png" id="4_g14xw"]

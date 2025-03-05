@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvmk10lpe5pdf"]
+
+[ext_resource type="Script" path="res://code/object/apple_tree/AppleTree.gd" id="1_d3rn2"]
+[ext_resource type="Texture2D" uid="uid://d4sv53lyobav" path="res://art/temp,testing/backgrounds/trees.png" id="2_kdqt0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8hwv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ldpu"]
+
+[node name="AppleTree" type="StaticBody2D"]
+script = ExtResource("1_d3rn2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_n8hwv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_3ldpu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_kdqt0")
+region_enabled = true
+region_rect = Rect2(77.0668, 175.805, 58.45, 73.7207)

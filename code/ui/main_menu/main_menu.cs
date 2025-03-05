@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public partial class main_menu : Control
 {
     // Linking to the game scene
-    private const string GameScenePath = "res://game.tscn";
+    private const string GameScenePath = "res://code/game.tscn";
     private NetworkManager _networkManager;
     private Global global;
     private Window _joinServerWindow;
