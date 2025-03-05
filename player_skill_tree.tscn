@@ -270,6 +270,11 @@ metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Panel/Attack" to="." method="attackButtonPressed"]
 [connection signal="pressed" from="Panel/Attack/Button" to="." method="backButtonPressed"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Cross Slash" to="." method="crossSlashToggled"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Starburst Stream" to="." method="starBurstStreamToggle"]
+[connection signal="pressed" from="Panel/Passive" to="." method="passiveButtonPressed"]
 [connection signal="pressed" from="Panel/Passive/Button" to="." method="backButtonPressed"]
+[connection signal="pressed" from="Panel/Pet" to="." method="petButtonPressed"]
 [connection signal="pressed" from="Panel/Pet/Button" to="." method="backButtonPressed"]
+[connection signal="pressed" from="Panel/Exploration" to="." method="explorationButtonPressed"]
 [connection signal="pressed" from="Panel/Exploration/Button" to="." method="backButtonPressed"]

@@ -17,6 +17,7 @@ var points
 var passiveButton
 var petButton
 var explorationButton
+var starBurstStream
 
 var skillPoints = 3
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,7 @@ func _ready():
 	backPassiveButton = $Panel/Passive/Button
 	backExplorationButton = $Panel/Exploration/Button
 	points = $Panel/SkillPoints/points
+	starBurstStream = $"Panel/Attack/AttackControl/Sword/Starburst Stream"
 
 	backAttackButton.visible = false
 	backPassiveButton.visible = false
@@ -49,14 +51,13 @@ func _ready():
 	petControl.visible = false
 	explorationControl.visible = false
 	swordLine.visible = false
-	
-	points.text = str(skillPoints);
 
-	skillPointsLabel.visible = false;
+	skillPointsLabel.visible = false
+	starBurstStream.disabled = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	points.text = str(skillPoints)
 
 func attackButtonPressed():
 	camera.set_position(Vector2(960/2, 540/2))
@@ -69,6 +70,7 @@ func attackButtonPressed():
 	swordLine.visible = true
 	skillPointsLabel.visible = true
 	skillPointsLabel.set_position(Vector2(832, 0))
+	
 func backButtonPressed():
 	camera.set_position(Vector2(960, 540))
 	camera.set_zoom(Vector2(1.0, 1.0))
@@ -89,3 +91,50 @@ func backButtonPressed():
 	petButton.disabled = false;
 	explorationButton.disabled = false;
 	skillPointsLabel.visible = false;
+	
+func passiveButtonPressed():
+	camera.set_position(Vector2(960/2, 540 + (540/2)))
+	camera.set_zoom(Vector2(2.0, 2.0))
+	playerButton.visible = false;
+	backPassiveButton.visible = true;
+	passiveButton.disabled = true;
+	passiveControl.visible = true;
+	skillPointsLabel.visible = true;
+	skillPointsLabel.set_position(Vector2(832, 540))
+	
+func petButtonPressed():
+	camera.set_position(Vector2(1440, 540/2))
+	camera.set_zoom(Vector2(2.0, 2.0))
+	playerButton.visible = false
+	backPetButton.visible = true
+	petButton.disabled = true
+	petControl.visible = true
+	skillPointsLabel.visible = true
+	skillPointsLabel.set_position(Vector2(1792, 0))
+	
+func explorationButtonPressed():
+	camera.set_position(Vector2(960 + (960/2), 540 + (540/2)))
+	camera.set_zoom(Vector2(2.0, 2.0))
+	playerButton.visible = false
+	backExplorationButton.visible = true
+	explorationButton.disabled = true
+	explorationControl.visible = true
+	skillPointsLabel.visible = true
+	skillPointsLabel.set_position(Vector2(1792, 540))
+
+func crossSlashToggled(toggled_on: bool):
+	if toggled_on:
+		skillPoints -= 1
+		starBurstStream.disabled = false
+	else:
+		skillPoints += 1
+		if starBurstStream.button_pressed:  # Check if it's currently toggled on
+			starBurstStream.button_pressed = false  # Force it to turn off
+			#starBurstStreamToggle(false)  # Call the function to refund points
+		starBurstStream.disabled = true  # Disable Starburst Stream after refunding
+			
+func starBurstStreamToggle(toggled_on: bool):
+	if toggled_on:
+		skillPoints -= 2
+	else:
+		skillPoints += 2
