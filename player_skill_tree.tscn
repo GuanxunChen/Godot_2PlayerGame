@@ -319,6 +319,7 @@ metadata/_edit_lock_ = true
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Cross Slash" to="." method="crossSlashToggled"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Starburst Stream" to="." method="starBurstStreamToggle"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Meteor Strike" to="." method="meteorStrikeToggle"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Parry" to="." method="parryToggle"]
 [connection signal="pressed" from="Panel/Passive" to="." method="passiveButtonPressed"]
 [connection signal="pressed" from="Panel/Passive/Button" to="." method="backButtonPressed"]
 [connection signal="pressed" from="Panel/Pet" to="." method="petButtonPressed"]
