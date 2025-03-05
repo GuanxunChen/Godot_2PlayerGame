@@ -18,8 +18,9 @@ var passiveButton
 var petButton
 var explorationButton
 var starBurstStream
+var meteorStrike
 
-var skillPoints = 3
+var skillPoints = 6
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = $Panel/Camera2D
@@ -41,6 +42,7 @@ func _ready():
 	backExplorationButton = $Panel/Exploration/Button
 	points = $Panel/SkillPoints/points
 	starBurstStream = $"Panel/Attack/AttackControl/Sword/Starburst Stream"
+	meteorStrike = $"Panel/Attack/AttackControl/Sword/Meteor Strike"
 
 	backAttackButton.visible = false
 	backPassiveButton.visible = false
@@ -54,6 +56,7 @@ func _ready():
 
 	skillPointsLabel.visible = false
 	starBurstStream.disabled = true
+	meteorStrike.disabled = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -134,6 +137,22 @@ func crossSlashToggled(toggled_on: bool):
 		starBurstStream.disabled = true  # Disable Starburst Stream after refunding
 			
 func starBurstStreamToggle(toggled_on: bool):
+	if toggled_on:
+		skillPoints -= 2
+		meteorStrike.disabled = false
+	else:
+		skillPoints += 2
+		if meteorStrike.button_pressed:
+			meteorStrike.button_pressed = false
+		meteorStrike.disabled = true
+
+func meteorStrikeToggle(toggled_on: bool):
+	if toggled_on:
+		skillPoints -= 3
+	else:
+		skillPoints += 3
+		
+func parryToggle(toggled_on: bool):
 	if toggled_on:
 		skillPoints -= 2
 	else:

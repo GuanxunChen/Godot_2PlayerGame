@@ -65,6 +65,7 @@ stretch_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="Panel/Attack"]
+visible = false
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
@@ -98,6 +99,43 @@ offset_bottom = 540.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
+[node name="LineControl" type="Control" parent="Panel/Attack/AttackControl"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Line2D" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(-16, -136, -168, -184)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D2" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(24, 8, -8, -144)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D3" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(-240, -192, -344, -192)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D4" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(24, 16, -128, -104)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
 [node name="Sword" type="Label" parent="Panel/Attack/AttackControl"]
 layout_mode = 0
 offset_left = 872.0
@@ -129,35 +167,43 @@ toggle_mode = true
 text = "Starburst Stream"
 metadata/_edit_lock_ = true
 
-[node name="Line2D" type="Line2D" parent="Panel/Attack/AttackControl/Sword"]
-z_index = -1
-points = PackedVector2Array(-16, -136, -168, -184)
-width = 5.0
-default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+[node name="Meteor Strike" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -456.0
+offset_top = -216.0
+offset_right = -328.0
+offset_bottom = -176.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Meteor Strike"
 metadata/_edit_lock_ = true
 
-[node name="Line2D2" type="Line2D" parent="Panel/Attack/AttackControl/Sword"]
-z_index = -1
-points = PackedVector2Array(24, 8, -8, -144)
-width = 5.0
-default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+[node name="Parry" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -168.0
+offset_top = -128.0
+offset_right = -118.0
+offset_bottom = -97.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Parry"
 metadata/_edit_lock_ = true
 
-[node name="Bow" type="Label" parent="Panel/Attack/AttackControl"]
+[node name="Slingshot" type="Label" parent="Panel/Attack/AttackControl"]
 layout_mode = 0
 offset_left = 688.0
-offset_top = 472.0
-offset_right = 745.0
-offset_bottom = 520.0
+offset_top = 496.0
+offset_right = 759.0
+offset_bottom = 544.0
 text = "Slingshot"
 metadata/_edit_lock_ = true
 
 [node name="Spear" type="Label" parent="Panel/Attack/AttackControl"]
 layout_mode = 0
-offset_left = 776.0
-offset_top = 352.0
-offset_right = 833.0
-offset_bottom = 400.0
+offset_left = 760.0
+offset_top = 368.0
+offset_right = 817.0
+offset_bottom = 416.0
 text = "Spear"
 metadata/_edit_lock_ = true
 
@@ -272,6 +318,7 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="Panel/Attack/Button" to="." method="backButtonPressed"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Cross Slash" to="." method="crossSlashToggled"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Starburst Stream" to="." method="starBurstStreamToggle"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Meteor Strike" to="." method="meteorStrikeToggle"]
 [connection signal="pressed" from="Panel/Passive" to="." method="passiveButtonPressed"]
 [connection signal="pressed" from="Panel/Passive/Button" to="." method="backButtonPressed"]
 [connection signal="pressed" from="Panel/Pet" to="." method="petButtonPressed"]
