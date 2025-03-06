@@ -1,4 +1,5 @@
 extends Node2D
+#region New Code Region
 var camera
 var attackButton
 var playerButton
@@ -19,10 +20,23 @@ var petButton
 var explorationButton
 var starBurstStream
 var meteorStrike
+var popup
+var attention
+var crossSlash
+var knightsWheel
+var parry
+var knightwheel_skill_unlocked = false
+var parry_skill_unlocked = false
+var meteor_skill_unlocked = false
+var starburst_skill_unlocked = false
+var cross_slash_skill_unlocked = false
+var attentionText = "Not Enough Skill Points!"
+#endregion
 
-var skillPoints = 6
+var skillPoints = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#region New Code Region
 	camera = $Panel/Camera2D
 	attackButton = $Panel/Attack
 	playerButton = $Panel/TextureButton
@@ -43,6 +57,12 @@ func _ready():
 	points = $Panel/SkillPoints/points
 	starBurstStream = $"Panel/Attack/AttackControl/Sword/Starburst Stream"
 	meteorStrike = $"Panel/Attack/AttackControl/Sword/Meteor Strike"
+	popup = $Panel/Popup
+	attention = $Panel/Popup/Attention
+	crossSlash = $"Panel/Attack/AttackControl/Sword/Cross Slash"
+	knightsWheel = $"Panel/Attack/AttackControl/Sword/Knight's Wheel"
+	parry = $Panel/Attack/AttackControl/Sword/Parry
+#endregion
 
 	backAttackButton.visible = false
 	backPassiveButton.visible = false
@@ -61,6 +81,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	points.text = str(skillPoints)
+	#if skillPoints == 0:
+		#crossSlash.set_toggle_mode(false)
+		#parry.set_toggle_mode(false)
+		#knightsWheel.set_toggle_mode(false)
+	#elif skillPoints < 3:
+		#knightsWheel.set_toggle_mode(false)
+	#else:
+		#pass
 
 func attackButtonPressed():
 	camera.set_position(Vector2(960/2, 540/2))
@@ -126,34 +154,82 @@ func explorationButtonPressed():
 	skillPointsLabel.set_position(Vector2(1792, 540))
 
 func crossSlashToggled(toggled_on: bool):
+	
 	if toggled_on:
-		skillPoints -= 1
-		starBurstStream.disabled = false
+		if skillPoints < 1:
+			popup.show()
+			attention.text = "Not Enough Skill Points!"
+			crossSlash.button_pressed = false
+		else:
+			skillPoints -= 1
+			starBurstStream.disabled = false
+			cross_slash_skill_unlocked = true
 	else:
-		skillPoints += 1
-		if starBurstStream.button_pressed:  # Check if it's currently toggled on
-			starBurstStream.button_pressed = false  # Force it to turn off
-			#starBurstStreamToggle(false)  # Call the function to refund points
-		starBurstStream.disabled = true  # Disable Starburst Stream after refunding
+		if cross_slash_skill_unlocked:
+			skillPoints += 1
+			if starBurstStream.button_pressed:  # Check if it's currently toggled on
+				starBurstStream.button_pressed = false  # Force it to turn off
+			starBurstStream.disabled = true  # Disable Starburst Stream after refunding
+			cross_slash_skill_unlocked = false
 			
 func starBurstStreamToggle(toggled_on: bool):
 	if toggled_on:
-		skillPoints -= 2
-		meteorStrike.disabled = false
+		if skillPoints < 2:
+			popup.show()
+			attention.text = attentionText
+			starBurstStream.button_pressed = false
+		else:
+			skillPoints -= 2
+			meteorStrike.disabled = false
+			starburst_skill_unlocked = true
 	else:
-		skillPoints += 2
-		if meteorStrike.button_pressed:
-			meteorStrike.button_pressed = false
-		meteorStrike.disabled = true
+		if starburst_skill_unlocked:
+			skillPoints += 2
+			if meteorStrike.button_pressed:
+				meteorStrike.button_pressed = false
+			meteorStrike.disabled = true
+			starburst_skill_unlocked = false
 
 func meteorStrikeToggle(toggled_on: bool):
 	if toggled_on:
-		skillPoints -= 3
+		if skillPoints < 3:
+			popup.show()
+			attention.text = attentionText
+			meteorStrike.button_pressed = false
+		else:
+			skillPoints -= 3
+			meteor_skill_unlocked = true
 	else:
-		skillPoints += 3
+		if meteor_skill_unlocked:
+			meteor_skill_unlocked = false
+			skillPoints += 3
 		
 func parryToggle(toggled_on: bool):
 	if toggled_on:
-		skillPoints -= 2
+		if skillPoints < 2:
+			popup.show()
+			attention.text = attentionText
+			parry.button_pressed = false
+		else:
+			skillPoints -= 2
+			parry_skill_unlocked = true
 	else:
-		skillPoints += 2
+		if parry_skill_unlocked:
+			skillPoints += 2
+			parry_skill_unlocked = false
+
+func knightsWheelToggle(toggled_on: bool):
+	if toggled_on:
+		if skillPoints < 3:
+			popup.show()
+			attention.text = attentionText
+			knightsWheel.button_pressed = false
+		else:
+			skillPoints -= 3
+			knightwheel_skill_unlocked = true
+	else:
+		if knightwheel_skill_unlocked:
+			skillPoints += 3
+			knightwheel_skill_unlocked = false
+
+
