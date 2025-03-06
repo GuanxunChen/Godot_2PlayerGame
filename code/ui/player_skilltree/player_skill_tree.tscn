@@ -86,7 +86,7 @@ metadata/_edit_lock_ = true
 [node name="SwordLine" type="Line2D" parent="Panel/Attack"]
 z_index = -1
 position = Vector2(940, 520)
-points = PackedVector2Array(12, 16, -52, -232)
+points = PackedVector2Array(12, 16, -44, -232)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
@@ -105,42 +105,71 @@ offset_bottom = 540.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="Line2D" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+[node name="SwordLines" type="Control" parent="Panel/Attack/AttackControl/LineControl"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Line2D" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
 z_index = -1
 position = Vector2(872, 272)
-points = PackedVector2Array(-16, -136, -168, -184)
+points = PackedVector2Array(-64, -184, -200, -240)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
 
-[node name="Line2D2" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+[node name="Line2D2" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
 z_index = -1
 position = Vector2(872, 272)
-points = PackedVector2Array(24, 8, -8, -144)
+points = PackedVector2Array(24, 8, -32, -176)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
 
-[node name="Line2D3" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+[node name="Line2D3" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
 z_index = -1
 position = Vector2(872, 272)
-points = PackedVector2Array(-240, -192, -344, -192)
+points = PackedVector2Array(-320, -232, -536, -232)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
 
-[node name="Line2D4" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+[node name="Line2D4" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
 z_index = -1
 position = Vector2(872, 272)
-points = PackedVector2Array(24, 16, -128, -104)
+points = PackedVector2Array(24, 16, -160, -160)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
 
-[node name="Line2D5" type="Line2D" parent="Panel/Attack/AttackControl/LineControl"]
+[node name="Line2D5" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
 z_index = -1
 position = Vector2(872, 272)
-points = PackedVector2Array(24, 16, -296, -96)
+points = PackedVector2Array(24, 16, -280, -136)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D6" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(24, 16, -448, -176)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D7" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(24, 16, -464, -104)
+width = 5.0
+default_color = Color(0.564706, 0.278431, 0.0431373, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D8" type="Line2D" parent="Panel/Attack/AttackControl/LineControl/SwordLines"]
+z_index = -1
+position = Vector2(872, 272)
+points = PackedVector2Array(-464, -104, -664, -104)
 width = 5.0
 default_color = Color(0.564706, 0.278431, 0.0431373, 1)
 metadata/_edit_lock_ = true
@@ -156,10 +185,9 @@ metadata/_edit_lock_ = true
 
 [node name="Cross Slash" type="Button" parent="Panel/Attack/AttackControl/Sword"]
 layout_mode = 0
-offset_left = -64.0
-offset_top = -160.0
-offset_right = 32.0
-offset_bottom = -129.0
+offset_left = -96.0
+offset_top = -192.0
+offset_bottom = -161.0
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 toggle_mode = true
 text = "Cross Slash"
@@ -167,10 +195,10 @@ metadata/_edit_lock_ = true
 
 [node name="Starburst Stream" type="Button" parent="Panel/Attack/AttackControl/Sword"]
 layout_mode = 0
-offset_left = -240.0
-offset_top = -208.0
-offset_right = -99.0
-offset_bottom = -177.0
+offset_left = -336.0
+offset_top = -256.0
+offset_right = -195.0
+offset_bottom = -225.0
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 toggle_mode = true
 text = "Starburst Stream"
@@ -178,10 +206,10 @@ metadata/_edit_lock_ = true
 
 [node name="Meteor Strike" type="Button" parent="Panel/Attack/AttackControl/Sword"]
 layout_mode = 0
-offset_left = -456.0
-offset_top = -216.0
-offset_right = -328.0
-offset_bottom = -176.0
+offset_left = -656.0
+offset_top = -256.0
+offset_right = -528.0
+offset_bottom = -216.0
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 toggle_mode = true
 text = "Meteor Strike"
@@ -189,10 +217,10 @@ metadata/_edit_lock_ = true
 
 [node name="Parry" type="Button" parent="Panel/Attack/AttackControl/Sword"]
 layout_mode = 0
-offset_left = -168.0
-offset_top = -128.0
-offset_right = -118.0
-offset_bottom = -97.0
+offset_left = -192.0
+offset_top = -176.0
+offset_right = -142.0
+offset_bottom = -145.0
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 toggle_mode = true
 text = "Parry"
@@ -200,14 +228,47 @@ metadata/_edit_lock_ = true
 
 [node name="Knight\'s Wheel" type="Button" parent="Panel/Attack/AttackControl/Sword"]
 layout_mode = 0
-offset_left = -352.0
-offset_top = -120.0
-offset_right = -229.0
-offset_bottom = -89.0
+offset_left = -360.0
+offset_top = -152.0
+offset_right = -237.0
+offset_bottom = -121.0
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 toggle_mode = true
 text = "Knight's Wheel
 "
+metadata/_edit_lock_ = true
+
+[node name="Sonic Slash" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -504.0
+offset_top = -192.0
+offset_right = -410.0
+offset_bottom = -161.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Sonic Slash"
+metadata/_edit_lock_ = true
+
+[node name="Side Step" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -504.0
+offset_top = -120.0
+offset_right = -425.0
+offset_bottom = -89.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Side Step"
+metadata/_edit_lock_ = true
+
+[node name="Shadow Walk" type="Button" parent="Panel/Attack/AttackControl/Sword"]
+layout_mode = 0
+offset_left = -752.0
+offset_top = -120.0
+offset_right = -640.0
+offset_bottom = -89.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+toggle_mode = true
+text = "Shadow Walk"
 metadata/_edit_lock_ = true
 
 [node name="Slingshot" type="Label" parent="Panel/Attack/AttackControl"]
@@ -351,6 +412,9 @@ offset_bottom = 23.0
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Meteor Strike" to="." method="meteorStrikeToggle"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Parry" to="." method="parryToggle"]
 [connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Knight\'s Wheel" to="." method="knightsWheelToggle"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Sonic Slash" to="." method="sonicSlashToggle"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Side Step" to="." method="sideStepToggle"]
+[connection signal="toggled" from="Panel/Attack/AttackControl/Sword/Shadow Walk" to="." method="shadowWalkToggle"]
 [connection signal="pressed" from="Panel/Passive" to="." method="passiveButtonPressed"]
 [connection signal="pressed" from="Panel/Passive/Button" to="." method="backButtonPressed"]
 [connection signal="pressed" from="Panel/Pet" to="." method="petButtonPressed"]

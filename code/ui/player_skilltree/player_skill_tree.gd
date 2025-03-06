@@ -31,6 +31,12 @@ var meteor_skill_unlocked = false
 var starburst_skill_unlocked = false
 var cross_slash_skill_unlocked = false
 var attentionText = "Not Enough Skill Points!"
+var sonicSlash
+var sonic_slash_skill_unlocked = false
+var side_step
+var side_step_skill_unlocked = false
+var shadow_walk
+var shadow_walk_skill_unlocked = false
 #endregion
 
 var skillPoints = 3
@@ -62,6 +68,9 @@ func _ready():
 	crossSlash = $"Panel/Attack/AttackControl/Sword/Cross Slash"
 	knightsWheel = $"Panel/Attack/AttackControl/Sword/Knight's Wheel"
 	parry = $Panel/Attack/AttackControl/Sword/Parry
+	sonicSlash = $"Panel/Attack/AttackControl/Sword/Sonic Slash"
+	side_step = $"Panel/Attack/AttackControl/Sword/Side Step"
+	shadow_walk = $"Panel/Attack/AttackControl/Sword/Shadow Walk"
 #endregion
 
 	backAttackButton.visible = false
@@ -77,18 +86,11 @@ func _ready():
 	skillPointsLabel.visible = false
 	starBurstStream.disabled = true
 	meteorStrike.disabled = true
+	shadow_walk.disabled = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	points.text = str(skillPoints)
-	#if skillPoints == 0:
-		#crossSlash.set_toggle_mode(false)
-		#parry.set_toggle_mode(false)
-		#knightsWheel.set_toggle_mode(false)
-	#elif skillPoints < 3:
-		#knightsWheel.set_toggle_mode(false)
-	#else:
-		#pass
 
 func attackButtonPressed():
 	camera.set_position(Vector2(960/2, 540/2))
@@ -154,11 +156,10 @@ func explorationButtonPressed():
 	skillPointsLabel.set_position(Vector2(1792, 540))
 
 func crossSlashToggled(toggled_on: bool):
-	
 	if toggled_on:
 		if skillPoints < 1:
 			popup.show()
-			attention.text = "Not Enough Skill Points!"
+			attention.text = attentionText
 			crossSlash.button_pressed = false
 		else:
 			skillPoints -= 1
@@ -232,4 +233,48 @@ func knightsWheelToggle(toggled_on: bool):
 			skillPoints += 3
 			knightwheel_skill_unlocked = false
 
+func sonicSlashToggle(toggled_on: bool):
+	if toggled_on:
+		if skillPoints < 3:
+			popup.show()
+			attention.text = attentionText
+			sonicSlash.button_pressed = false
+		else:
+			skillPoints -= 3
+			sonic_slash_skill_unlocked = true
+	else:
+		if sonic_slash_skill_unlocked:
+			sonic_slash_skill_unlocked = false
+			skillPoints += 3
 
+func sideStepToggle(toggled_on: bool):
+	if toggled_on:
+		if skillPoints < 1:
+			popup.show()
+			attention.text = attentionText
+			side_step.button_pressed = false
+		else:
+			skillPoints -= 1
+			shadow_walk.disabled = false
+			side_step_skill_unlocked = true
+	else:
+		if side_step_skill_unlocked:
+			skillPoints += 1
+			if shadow_walk.button_pressed:  # Check if it's currently toggled on
+				shadow_walk.button_pressed = false  # Force it to turn off
+			shadow_walk.disabled = true  # Disable Starburst Stream after refunding
+			side_step_skill_unlocked = false
+
+func shadowWalkToggle(toggled_on: bool):
+	if toggled_on:
+		if skillPoints < 4:
+			popup.show()
+			attention.text = attentionText
+			shadow_walk.button_pressed = false
+		else:
+			skillPoints -= 3
+			shadow_walk_skill_unlocked = true
+	else:
+		if shadow_walk_skill_unlocked:
+			shadow_walk_skill_unlocked = false
+			skillPoints += 3
