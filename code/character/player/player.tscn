@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d14eq7u6qx0ky"]
 
-[ext_resource type="Script" path="res://code/character/player/Player.cs" id="1_mntu8"]
+[ext_resource type="Script" path="res://code/character/player/player.gd" id="1_10ou8"]
 [ext_resource type="Texture2D" uid="uid://bdsprrcef728n" path="res://art/temp,testing/characterCreation/characterbody/Amelia_run_16x16.png" id="2_jra13"]
 
 [sub_resource type="Animation" id="Animation_gangx"]
@@ -130,7 +130,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_6klor"]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_mntu8")
+script = ExtResource("1_10ou8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

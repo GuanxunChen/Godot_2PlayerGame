@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://402dcov3p0o7"]
 
-[ext_resource type="Script" path="res://code/ui/player_creation/CharacterCreate.cs" id="1_m2gkb"]
+[ext_resource type="Script" path="res://code/ui/player_creation/characterCreate.gd" id="1_vjyt4"]
 [ext_resource type="Texture2D" uid="uid://s3eyqtu4w3p4" path="res://art/temp,testing/characterCreation/characterbody/2036 - Icon.png" id="3_geuum"]
 [ext_resource type="Texture2D" uid="uid://cpx1wwxyuunmi" path="res://art/temp,testing/characterCreation/hairstyles/hair1.jpg" id="3_wvefi"]
 [ext_resource type="Texture2D" uid="uid://ckrytet7qnroi" path="res://art/temp,testing/characterCreation/outfits/outfit1.png" id="4_g14xw"]
 [ext_resource type="Texture2D" uid="uid://b8d3qr3lfnc21" path="res://art/temp,testing/backgrounds/black_windows.jpg" id="10_8tqdm"]
 
 [node name="CharacterCreation" type="Node2D"]
-script = ExtResource("1_m2gkb")
+script = ExtResource("1_vjyt4")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -15,7 +15,7 @@ offset_bottom = 1080.0
 texture = ExtResource("10_8tqdm")
 
 [node name="CharacterDisplay" type="Node2D" parent="."]
-position = Vector2(1200, 435)
+position = Vector2(1500, 435)
 
 [node name="CharacterBody" type="Sprite2D" parent="CharacterDisplay"]
 texture = ExtResource("3_geuum")
@@ -49,22 +49,22 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Left Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
+[node name="HairStyleLeft Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "<"
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Hairstyle"]
+[node name="HairStylePreview" type="TextureRect" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 texture = ExtResource("3_wvefi")
 stretch_mode = 3
 
-[node name="Right Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
+[node name="HairStyleRight Arrow" type="Button" parent="Control/VBoxContainer/Hairstyle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = ">"
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="R" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 12
@@ -73,9 +73,10 @@ vertical_alignment = 1
 
 [node name="redSlider" type="HSlider" parent="Control/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
+max_value = 1.0
+step = 0.1
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+[node name="G" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 12
@@ -84,9 +85,10 @@ vertical_alignment = 1
 
 [node name="greenSlider" type="HSlider" parent="Control/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
+max_value = 1.0
+step = 0.1
 
-[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+[node name="B" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 12
@@ -95,7 +97,8 @@ vertical_alignment = 1
 
 [node name="blueSlider" type="HSlider" parent="Control/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
+max_value = 1.0
+step = 0.1
 
 [node name="Outfits" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -108,17 +111,17 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Left Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
+[node name="OutfitLeft Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "<"
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Outfit"]
+[node name="OutfitPreview" type="TextureRect" parent="Control/VBoxContainer/Outfit"]
 layout_mode = 2
 texture = ExtResource("4_g14xw")
 stretch_mode = 3
 
-[node name="Right Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
+[node name="OutfitRight Arrow" type="Button" parent="Control/VBoxContainer/Outfit"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = ">"
@@ -128,3 +131,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Save
 "
+
+[connection signal="pressed" from="Control/VBoxContainer/Hairstyle/HairStyleLeft Arrow" to="." method="_on_hair_style_left_arrow_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Hairstyle/HairStyleRight Arrow" to="." method="_on_hair_style_right_arrow_pressed"]
+[connection signal="value_changed" from="Control/VBoxContainer/redSlider" to="." method="_on_red_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/greenSlider" to="." method="_on_green_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/blueSlider" to="." method="_on_blue_slider_value_changed"]
+[connection signal="pressed" from="Control/VBoxContainer/Outfit/OutfitLeft Arrow" to="." method="_on_outfit_left_arrow_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Outfit/OutfitRight Arrow" to="." method="_on_outfit_right_arrow_pressed"]
